@@ -4,4 +4,7 @@
     <string name="title_home">All Products</string>
     <string name="title_dashboard">Cart</string>
     <string name="title_notifications">All Order at this store</string>
+    <string name="order_details">Order Details</string>
+    <string name="customer_name">Customer Name:</string>
+    <string name="date_placed">Date Placed:</string>
 </resources>
