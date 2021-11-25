@@ -9,8 +9,6 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MSG = "";
 
-    //Test commit
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +23,10 @@ public class MainActivity extends AppCompatActivity {
         //not updated
     }
 
-    public void CustomerRegister(View view){
-        //not updated
+    public void CreateAccount(View view){
+        //Start the create account view
+        Intent intent = new Intent(this, CustomerAccountCreationActivity.class);
+        startActivity(intent);
     }
 
     public void CustomerLogin(View view){
