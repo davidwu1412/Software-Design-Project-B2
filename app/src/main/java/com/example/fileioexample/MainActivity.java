@@ -26,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void CustomerRegister(View view){
-        //jump to some view
-        Intent intent = new Intent(this,ListProd.class);
-        startActivity(intent);
+        //not updated
     }
 
     public void CustomerLogin(View view){

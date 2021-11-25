@@ -13,6 +13,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.fileioexample.databinding.ActivityListProdBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ListProd extends AppCompatActivity {
 
@@ -33,6 +35,8 @@ public class ListProd extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_list_prod);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+        // load store product data here
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("products");
     }
 
 }
