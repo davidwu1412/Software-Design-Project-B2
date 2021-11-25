@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/zhuoc/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_list_prod.xml" value="0.22234762979683972" />
-        <entry key="..\:/Users/zhuoc/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/zhuoc/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/fragment_dashboard.xml" value="0.33" />
-        <entry key="..\:/Users/zhuoc/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_list_orders.xml" value="0.4" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_list_prod.xml" value="0.4" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_order_details.xml" value="0.4" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/fragment_dashboard.xml" value="0.264" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/david/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
       </map>
     </option>
   </component>
