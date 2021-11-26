@@ -36,7 +36,7 @@ public class ListProd extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
         // load store product data here
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("products");
+        //DatabaseReference ref = FirebaseDatabase.getInstance().getReference("products");
     }
 
 }
