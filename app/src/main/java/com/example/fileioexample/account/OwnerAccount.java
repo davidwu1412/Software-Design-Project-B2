@@ -6,13 +6,17 @@ public class OwnerAccount extends Account {
 
     private Store store;
 
-    public OwnerAccount(String username, String password, String storeName, String storeAddress) {
-        super(username, password);
+    public OwnerAccount(){
+
+    }
+
+    public OwnerAccount(String username, String storeName, String storeAddress) {
+        super(username);
         this.store = new Store(storeName, storeAddress);
     }
 
-    public OwnerAccount(String username, String password, Store store) {
-        super(username, password);
+    public OwnerAccount(String username, Store store) {
+        super(username);
         this.store = store;
     }
 
