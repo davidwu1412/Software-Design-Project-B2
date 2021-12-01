@@ -29,6 +29,7 @@ public class Store {
         this.orders = orders;
     }
 
+
     public String getName() {
         return storeName;
     }
