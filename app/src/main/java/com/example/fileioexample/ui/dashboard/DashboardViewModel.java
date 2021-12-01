@@ -1,4 +1,4 @@
-package com.example.fileioexample.ui.dashboard;
+package com.example.fileioexample;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

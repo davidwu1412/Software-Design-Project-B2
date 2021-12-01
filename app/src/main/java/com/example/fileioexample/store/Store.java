@@ -5,8 +5,8 @@ import java.util.Objects;
 
 public class Store {
 
-    private String name;
-    private String address;
+    private String storeName;
+    private String storeAddress;
     private ArrayList<Product> availableProducts;
     private ArrayList<Order> orders;
 
@@ -16,33 +16,34 @@ public class Store {
     }
 
     public Store(String name, String address) {
-        this.name = name;
-        this.address = address;
+        this.storeName = name;
+        this.storeAddress = address;
         this.availableProducts = new ArrayList<Product>();
         this.orders = new ArrayList<Order>();
     }
 
     public Store(String name, String address, ArrayList<Product> availableProducts, ArrayList<Order> orders) {
-        this.name = name;
-        this.address = address;
+        this.storeName = name;
+        this.storeAddress = address;
         this.availableProducts = availableProducts;
         this.orders = orders;
     }
 
+
     public String getName() {
-        return name;
+        return storeName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.storeName = name;
     }
 
     public String getAddress() {
-        return address;
+        return storeAddress;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.storeAddress = address;
     }
 
     public ArrayList<Product> getAvailableProducts() {
@@ -66,19 +67,19 @@ public class Store {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Store store = (Store) o;
-        return name.equals(store.name) && address.equals(store.address);
+        return storeName.equals(store.storeName) && storeAddress.equals(store.storeAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, address);
+        return Objects.hash(storeName, storeAddress);
     }
 
     @Override
     public String toString() {
         return "Store{" +
-                "name='" + name + '\'' +
-                ", address='" + address + '\'' +
+                "name='" + storeName + '\'' +
+                ", address='" + storeAddress + '\'' +
                 '}';
     }
 
