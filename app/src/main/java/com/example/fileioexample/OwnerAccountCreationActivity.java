@@ -1,43 +1,34 @@
 package com.example.fileioexample;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.fileioexample.account.Account;
 import com.example.fileioexample.account.CustomerAccount;
 import com.example.fileioexample.account.OwnerAccount;
 import com.example.fileioexample.utils.DatabaseUtils;
 import com.example.fileioexample.utils.Popup;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-public class CustomerAccountCreationActivity extends AppCompatActivity {
+public class OwnerAccountCreationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_account_creation);
+        setContentView(R.layout.activity_owner_account_creation);
     }
 
-    public void createCustomerAccount(View view){
-        EditText usernameText = (EditText) findViewById(R.id.editTextTextPersonName3);
+    public void createOwnerAccount(View view){
+
+        //Validate username and password
+        EditText usernameText = (EditText) findViewById(R.id.editTextTextPersonName7);
         String username = usernameText.getText().toString();
 
-        EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword);
-        EditText passwordTextConfirm = (EditText) findViewById(R.id.editTextTextPassword2);
+        EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword6);
+        EditText passwordTextConfirm = (EditText) findViewById(R.id.editTextTextPassword7);
         String password = passwordText.getText().toString();
 
         //Check if username text box is filled
@@ -74,8 +65,31 @@ public class CustomerAccountCreationActivity extends AppCompatActivity {
             return;
         }
 
+        //Validate the store details (name and address)
+        EditText storeNameText = (EditText) findViewById(R.id.editTextTextPersonName6);
+        String storeName = storeNameText.getText().toString().trim();
+        EditText storeAddressText = (EditText) findViewById(R.id.editTextTextPersonName);
+        String storeAddress = storeAddressText.getText().toString().trim();
+
+        if(storeName.equals("")){
+            //Show a popup that tells the user to enter a store name
+            Popup.createNewAlertPopup("Store Name field is empty", this);
+            return;
+        }
+
+        if(storeAddress.equals("")){
+            //Show a popup that tells the user to enter a store address
+            Popup.createNewAlertPopup("Store Address field is empty", this);
+            return;
+        }
+
+        if(!DatabaseUtils.validateNewStoreAddress(storeName, storeAddress)){
+            Popup.createNewAlertPopup("Store name and address is taken", this);
+            return;
+        }
+
         //Add the new account credentials to the database
-        DatabaseUtils.addCustomerAccount(username, password);
+        DatabaseUtils.addOwnerAccount(username, storeName, storeAddress, password);
         setResult(1); //Set result code to 1 to indicate account was successfully created
         finish();
     }
