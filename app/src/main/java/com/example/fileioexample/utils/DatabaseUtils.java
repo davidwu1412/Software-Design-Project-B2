@@ -2,12 +2,9 @@ package com.example.fileioexample.utils;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
-
+import com.example.fileioexample.account.CustomerAccount;
 import com.example.fileioexample.account.OwnerAccount;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
+import com.example.fileioexample.login.LoginModel;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,12 +23,12 @@ public class DatabaseUtils {
     public static boolean validateUsername(String username){
 
         //Check the username is being used by a customer
-        if(DatabaseManager.customers != null && DatabaseManager.customers.containsKey(username)){
+        if(LoginModel.customers != null && LoginModel.customers.containsKey(username)){
             return false;
         }
 
         //Check the username is being used by an owner
-        if(DatabaseManager.owners != null && DatabaseManager.owners.containsKey(username)){
+        if(LoginModel.owners != null && LoginModel.owners.containsKey(username)){
             return false;
         }
 
@@ -45,16 +42,15 @@ public class DatabaseUtils {
     public static boolean validateNewStoreAddress(String newStoreName, String newStoreAddress){
 
         //If there are no owners, return true
-        if(DatabaseManager.owners == null)
+        if(LoginModel.owners == null)
             return true;
 
-        for (Map.Entry entry : DatabaseManager.owners.entrySet()) {
+        for (Map.Entry entry : LoginModel.owners.entrySet()) {
 
             //Get the address from each owner
             HashMap owner = (HashMap) entry.getValue();
-            HashMap store = (HashMap) owner.get("store");
-            String storeName = (String) store.get("name");
-            String address = (String) store.get("address");
+            String storeName = (String) owner.get("storeName");
+            String address = (String) owner.get("storeAddress");
 
             //If the address matches newStoreAddress, the address is taken, so return false
             if(newStoreName.equals(storeName) && newStoreAddress.equals(address)){
@@ -67,5 +63,23 @@ public class DatabaseUtils {
         return true;
 
     }
+
+    //Write customer account to the database
+    public static void addCustomerAccount(String username, String password){
+
+        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(username).setValue(new CustomerAccount(username));
+        DatabaseUtils.PASSWORDS_REF.child(username).setValue(password);
+
+    }
+
+    //Write an owner account to the database
+    public static void addOwnerAccount(String username, String storeName, String storeAddress, String password){
+
+        DatabaseUtils.OWNER_ACCOUNTS_REF.child(username).setValue(new OwnerAccount(username, storeName, storeAddress));
+        DatabaseUtils.PASSWORDS_REF.child(username).setValue(password);
+
+    }
+
+
 
 }

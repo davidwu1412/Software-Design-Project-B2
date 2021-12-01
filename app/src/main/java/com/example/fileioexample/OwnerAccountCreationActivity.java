@@ -89,8 +89,7 @@ public class OwnerAccountCreationActivity extends AppCompatActivity {
         }
 
         //Add the new account credentials to the database
-        DatabaseUtils.OWNER_ACCOUNTS_REF.child(username).setValue(new OwnerAccount(username, storeName, storeAddress));
-        DatabaseUtils.PASSWORDS_REF.child(username).setValue(password);
+        DatabaseUtils.addOwnerAccount(username, storeName, storeAddress, password);
         setResult(1); //Set result code to 1 to indicate account was successfully created
         finish();
     }

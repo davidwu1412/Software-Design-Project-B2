@@ -75,8 +75,7 @@ public class CustomerAccountCreationActivity extends AppCompatActivity {
         }
 
         //Add the new account credentials to the database
-        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(username).setValue(new CustomerAccount(username));
-        DatabaseUtils.PASSWORDS_REF.child(username).setValue(password);
+        DatabaseUtils.addCustomerAccount(username, password);
         setResult(1); //Set result code to 1 to indicate account was successfully created
         finish();
     }
