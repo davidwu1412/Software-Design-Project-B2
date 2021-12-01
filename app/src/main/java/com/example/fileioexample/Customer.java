@@ -29,8 +29,12 @@ public class Customer extends Account implements FirebaseIO{
 
     public static Customer create(String n, String p) throws Exception {
         Customer c = new Customer(Account.create(n,p,"Customer Acc"));
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Customer Acc").child("C1").child("Pending");
-        ref.setValue("1233");
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference("Customer Acc").child(n).child("Pending");
+        ref1.setValue("000");
+        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference("Customer Acc").child(n).child("Completed");
+        ref2.setValue("000");
+        DatabaseReference ref3 = FirebaseDatabase.getInstance().getReference("Customer Acc").child(n).child("Cart");
+        ref3.setValue("000");
 
         return c;
 

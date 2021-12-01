@@ -67,8 +67,8 @@ public class Account{
     public static String create(String n, String p,String acctype) throws Exception{
         if (check_valid(n,acctype)){
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("Customer Acc").child("C1").child("Password");
-            myRef.setValue("abcdefg");
+            DatabaseReference myRef = database.getReference(acctype).child(n).child("Password");
+            myRef.setValue(p);
             return n;
         }
         else{
