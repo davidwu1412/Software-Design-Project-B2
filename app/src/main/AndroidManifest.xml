@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
+            android:name=".CustomerProfile"
+            android:exported="false" />
+        <activity
             android:name=".OwnerListProductsActivity"
             android:exported="false" />
         <activity
