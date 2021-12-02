@@ -12,6 +12,7 @@ import com.example.fileioexample.account.OwnerAccount;
 import com.example.fileioexample.login.LoginContract;
 import com.example.fileioexample.login.LoginModel;
 import com.example.fileioexample.login.LoginPresenter;
+import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.Popup;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -95,7 +96,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void ownerLogin() {
         //Start the first owner activity
-        Intent intent = new Intent(this,ListProd.class);
+        CurrentUser.username = getUsername();
+        Intent intent = new Intent(this,OwnerListProductsActivity.class);
         startActivity(intent);
     }
 
