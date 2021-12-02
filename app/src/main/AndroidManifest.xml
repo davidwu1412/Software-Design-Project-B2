@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
+            android:name=".NavOrign2Activity"
+            android:exported="false"
+            android:label="@string/title_activity_nav_orign2"
+            android:theme="@style/Theme.FileIOExample.NoActionBar" />
+        <activity
             android:name=".OwnerAccountCreationActivity"
             android:exported="false" />
         <activity
