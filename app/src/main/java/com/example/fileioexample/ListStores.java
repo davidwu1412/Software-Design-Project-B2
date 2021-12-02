@@ -26,7 +26,6 @@ public class ListStores extends AppCompatActivity {
         setContentView(R.layout.activity_list_stores);
 
         mbase = FirebaseDatabase.getInstance().getReference("/accounts/owners/");
-        Log.d("THIS_IS_TAG", mbase.getKey());
         recyclerView = findViewById(R.id.recycler_store);
 
         // displays the recyclerview linearly(vertical)

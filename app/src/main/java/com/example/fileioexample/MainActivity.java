@@ -12,13 +12,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
     }
 
     // these are for jumping into new activities after login or register
     public void TestYourCode(View view){
         //jump to some view to test your activities
-        Intent intent = new Intent(this,LoginActivity.class);
+        Intent intent = new Intent(this,ListOrders.class);
         startActivity(intent);
     }
 

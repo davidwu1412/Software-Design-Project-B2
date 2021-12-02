@@ -1,6 +1,6 @@
 package com.example.fileioexample.customer;
 
-public class Customer {
-    private Order order;
-
-}
+//public class Customer {
+//    private Order order;
+//
+//}
