@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation2"
+    app:startDestination="@+id/seeAllStores">
+
+    <fragment
+        android:id="@+id/seeAllStores"
+        android:name="com.example.fileioexample.SeeAllStores"
+        android:label="See All Stores"
+        tools:layout="@layout/fragment_see_all_stores" />
+    <fragment
+        android:id="@+id/seeAllOrders"
+        android:name="com.example.fileioexample.SeeAllOrders"
+        android:label="See All Orders"
+        tools:layout="@layout/fragment_see_all_orders" />
+    <fragment
+        android:id="@+id/uncompleteOrder"
+        android:name="com.example.fileioexample.UncompleteOrder"
+        android:label="Uncomplete Order"
+        tools:layout="@layout/fragment_uncomplete_order" />
+    <fragment
+        android:id="@+id/logoutCart"
+        android:name="com.example.fileioexample.LogoutCart"
+        android:label="Logout"
+        tools:layout="@layout/fragment_logout_cart" />
+</navigation>

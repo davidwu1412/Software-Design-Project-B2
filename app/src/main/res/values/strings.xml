@@ -22,4 +22,12 @@
     <string name="menu_See_ALL_Orders">See All Orders</string>
     <string name="menu_Logout">Logout</string>
     <string name="easiest">Easiest Way to Shop</string>
+    <string name="title_activity_nav_orign2">NavOrign2Activity</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Place">Place Order</string>
 </resources>
