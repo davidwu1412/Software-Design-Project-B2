@@ -8,4 +8,6 @@
     <string name="customer_name">Customer Name:</string>
     <string name="date_placed">Date Placed:</string>
     <string name="order_file">Orders.txt</string>
+    <string name="B2">B2</string>
+    <string name="Check">Mark Order as Complete</string>
 </resources>

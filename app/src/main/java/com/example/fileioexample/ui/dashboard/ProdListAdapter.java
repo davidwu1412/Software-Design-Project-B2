@@ -38,6 +38,11 @@ public class ProdListAdapter extends RecyclerView.Adapter<RecyclerViewHolder>{
         return R.layout.frame_cart;
     }
 
+    @Override
+    public int getItemCount() {
+        return 0;
+    }
+
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -48,11 +53,11 @@ public class ProdListAdapter extends RecyclerView.Adapter<RecyclerViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
-        holder.getView().setText(String.valueOf(product));
+        //holder.getView().setText(String.valueOf(product));
     }
 
-    @Override
-    public int getItemCount() {
-        return order.get;
-    }
+    //@Override
+    //public int getItemCount() {
+        //return order.get;
+    //}
 }
