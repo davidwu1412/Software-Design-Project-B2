@@ -10,4 +10,16 @@
     <string name="order_file">Orders.txt</string>
     <string name="B2">B2</string>
     <string name="Check">Mark Order as Complete</string>
+    <string name="title_activity_nav_origin">NavOriginActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_List_Product">List Products</string>
+    <string name="menu_See_ALL_Orders">See All Orders</string>
+    <string name="menu_Logout">Logout</string>
+    <string name="easiest">Easiest Way to Shop</string>
 </resources>

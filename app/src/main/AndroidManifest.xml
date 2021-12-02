@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
+            android:name=".NavOriginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_nav_origin"
+            android:theme="@style/Theme.FileIOExample.NoActionBar" />
+        <activity
             android:name=".OwnerAccountCreationActivity"
             android:exported="false" />
         <activity
@@ -20,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".Order_Details"
-            android:parentActivityName=".ListProd">
+            android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data

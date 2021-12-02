@@ -5,19 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.acl.Owner;
 import java.util.ArrayList;
 
 import Current.Current_Order;
@@ -29,7 +30,7 @@ public class Order_Details extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_details);
+        setContentView(R.layout.nav_order_detail);
 
         Intent intent = getIntent();
         Current_Order Order = new Current_Order();
@@ -86,7 +87,41 @@ public class Order_Details extends AppCompatActivity {
                 }
             }
         });
+
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId()==R.id.nav_list_products){
+                    Click_list_product();
+                }
+                if(item.getItemId()==R.id.nav_see_all_orders){
+                    Click_see_all_orders();
+                }
+                if(item.getItemId()==R.id.nav_logout){
+                    Click_Logout();
+                }
+                return true;
+            }
+        });
     }
+
+    public void Click_list_product(){
+        Intent intent = new Intent(this,ListProd.class);
+        startActivity(intent);
+    }
+
+    public void Click_see_all_orders(){
+        Intent intent = new Intent(this,ListOrders.class);
+        startActivity(intent);
+    }
+
+    public void Click_Logout(){
+        Intent intent = new Intent(this,LoginActivity.class);
+        startActivity(intent);
+    }
+
 
     public static class information {
         String brand;
