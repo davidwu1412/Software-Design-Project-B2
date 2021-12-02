@@ -14,26 +14,31 @@ public class CustomerAccount extends Account {
     private String lastName;
     private String email;
 
-    public CustomerAccount(String username, String password) {
-        super(username, password);
+    public CustomerAccount() {
+        super();
         this.orders = new ArrayList<Order>();
     }
 
-    public CustomerAccount(String username, String password, ArrayList<Order> orders) {
-        super(username, password);
+    public CustomerAccount(String username) {
+        super(username);
+        this.orders = new ArrayList<Order>();
+    }
+
+    public CustomerAccount(String username, ArrayList<Order> orders) {
+        super(username);
         this.orders = orders;
     }
 
-    public CustomerAccount(String username, String password, String firstName, String lastName, String email) {
-        super(username, password);
+    public CustomerAccount(String username, String firstName, String lastName, String email) {
+        super(username);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.orders = new ArrayList<Order>();
     }
 
-    public CustomerAccount(String username, String password, ArrayList<Order> orders, String firstName, String lastName, String email) {
-        super(username, password);
+    public CustomerAccount(String username, ArrayList<Order> orders, String firstName, String lastName, String email) {
+        super(username);
         this.orders = orders;
         this.firstName = firstName;
         this.lastName = lastName;
