@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     app:cardCornerRadius="8dp"
-    android:layout_margin="16dp">
+    android:layout_margin="7dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:text="Status: "
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:text="complete/incomplete"
                 android:textColor="@color/black"
-                android:textSize="15dp"/>
+                android:textSize="20dp"/>
 
 
         </LinearLayout>
@@ -50,18 +50,18 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/customer_name"
+                android:text="Customer Username: "
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/cus_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" FirstName LastName "
+                android:text=" username "
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -74,9 +74,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order Id:"
+                android:text="Order Id: "
                 android:textColor="@color/black"
-                android:textSize="15dp"
+                android:textSize="20dp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -85,15 +85,15 @@
                 android:layout_height="wrap_content"
                 android:text="order id"
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textSize="20dp" />
 
         </LinearLayout>
-        <Button
-            android:id="@+id/button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="@string/order_details"
-            android:layout_gravity="center_horizontal"/>
+<!--        <Button-->
+<!--            android:id="@+id/button"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/order_details"-->
+<!--            android:layout_gravity="center_horizontal"/>-->
 
 
     </LinearLayout>

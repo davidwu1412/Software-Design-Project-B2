@@ -10,14 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
+            android:name=".OwnerOrdersList"
+            android:exported="false" />
+        <activity
             android:name=".ListOrders"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".OwnerAccountCreationActivity"
             android:exported="false" />
         <activity
             android:name=".ListStores"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
             android:exported="false" />

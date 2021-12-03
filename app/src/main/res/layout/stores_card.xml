@@ -8,70 +8,57 @@
     app:cardElevation="5dp"
     app:cardCornerRadius="8dp"
     android:layout_margin="5dp">
-<!--    android:layout_margin="16dp"-->
-<!--    android:layout_marginLeft="3dp"-->
-<!--    android:layout_marginRight="3dp"-->
-<!--    android:layout_marginBottom="3dp"-->
-<!--    card_view:cardCornerRadius="7dp"-->
-<!--    card_view:cardElevation="1dp">-->
 
-    <RelativeLayout
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingVertical="15dp">-->
+
+
+    <LinearLayout
+        android:id="@+id/linear_layout_stores"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingVertical="15dp">
 
 
-        <LinearLayout
-            android:id="@+id/linear_layout_stores"
-            android:layout_width="225dp"
+        <TextView
+            android:id="@+id/store_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingVertical="5dp"
-            android:paddingLeft="30dp">
+            android:text="Store Name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/store_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Store Name"
-                android:textColor="@color/black"
-                android:textSize="24dp"
-                android:textStyle="bold" />
-
-            <!--            <TextView-->
-            <!--                android:id="@+id/username"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="username"-->
-            <!--                android:textColor="@color/black"-->
-            <!--                android:textSize="24dp"-->
-            <!--                android:textStyle="bold" />-->
-
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="address"
-                android:textColor="@color/black"
-                android:textSize="16dp" />
-
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/tint"
-            android:layout_width="107dp"
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="48dp"
-            android:layout_marginLeft="48dp"
-            android:layout_marginEnd="48dp"
-            android:layout_toEndOf="@+id/linear_layout_stores"
-            android:layout_toRightOf="@+id/linear_layout_stores"
-            android:backgroundTint="#F19F85"
-            android:text="Shop" />
+            android:textAlignment="center"
+            android:text="address"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
 
-    </RelativeLayout>
+
+    </LinearLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/stores_button"-->
+<!--            android:layout_width="107dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="48dp"-->
+<!--            android:layout_marginLeft="48dp"-->
+<!--            android:layout_marginEnd="48dp"-->
+<!--            android:layout_toEndOf="@+id/linear_layout_stores"-->
+<!--            android:layout_toRightOf="@+id/linear_layout_stores"-->
+<!--            android:backgroundTint="#F19F85"-->
+<!--            android:text="Shop" />-->
+
+<!--    </RelativeLayout>-->
 
 </androidx.cardview.widget.CardView>
