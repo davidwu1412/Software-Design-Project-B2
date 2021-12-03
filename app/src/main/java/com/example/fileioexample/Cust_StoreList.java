@@ -22,7 +22,7 @@ public class Cust_StoreList extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
     CustStoreAdapter adapter;
-    ArrayList<Store> StoreList;
+    ArrayList<CustStore> StoreList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,11 @@ public class Cust_StoreList extends AppCompatActivity {
         setContentView(R.layout.activity_cust_store_list);
 
         recyclerView = findViewById(R.id.CustStoreRecyclerView);
-        database = FirebaseDatabase.getInstance().getReference();
+        database = FirebaseDatabase.getInstance().getReference("accounts/owners");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        StoreList = new ArrayList<Store>();
+        StoreList = new ArrayList<CustStore>();
         adapter = new CustStoreAdapter(this,StoreList);
         recyclerView.setAdapter(adapter);
 
@@ -42,7 +42,7 @@ public class Cust_StoreList extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapShot:snapshot.getChildren()){
-                    Store s = dataSnapShot.getValue(Store.class);
+                    CustStore s = dataSnapShot.getValue(CustStore.class);
                     StoreList.add(s);
                 }
                 adapter.notifyDataSetChanged();

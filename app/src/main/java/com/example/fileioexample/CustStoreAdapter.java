@@ -17,9 +17,9 @@ import java.util.ArrayList;
 
 public class CustStoreAdapter extends RecyclerView.Adapter<CustStoreAdapter.CustStoreViewHolder>{
     Context context;
-    ArrayList<Store> StoreList;
+    ArrayList<CustStore> StoreList;
 
-    public CustStoreAdapter(Context context, ArrayList<Store> StoreList){
+    public CustStoreAdapter(Context context, ArrayList<CustStore> StoreList){
         this.context=context;
         this.StoreList = StoreList;
     }
@@ -34,8 +34,8 @@ public class CustStoreAdapter extends RecyclerView.Adapter<CustStoreAdapter.Cust
 
     @Override
     public void onBindViewHolder(@NonNull CustStoreViewHolder holder, int position) {
-        Store s = StoreList.get(position);
-        holder.StoreInfo.setText(s.toString());
+        CustStore s = StoreList.get(position);
+        holder.StoreInfo.setText("Store: "+s.getStoreName()+"\n"+"Address: "+s.getStoreAddress());
         holder.Enter.setText("Enter");
     }
 
