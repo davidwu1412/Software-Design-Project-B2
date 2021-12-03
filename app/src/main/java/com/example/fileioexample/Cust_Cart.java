@@ -23,27 +23,30 @@ public class Cust_Cart extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
     CustCartAdapter adapter;
-    ArrayList<Product> Cart;
+    ArrayList<CustProduct> Cart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cust_cart);
 
+
         recyclerView = findViewById(R.id.CustCartRecyclerView);
-        database = FirebaseDatabase.getInstance().getReference();
+        database = FirebaseDatabase.getInstance().getReference("stores/owner1/orderList/0/products");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Cart = new ArrayList<Product>();
-        adapter = new CustCartAdapter(this.Cart);
+        Cart = new ArrayList<CustProduct>();
+        adapter = new CustCartAdapter(this,Cart);
         recyclerView.setAdapter(adapter);
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapShot:snapshot.getChildren()){
-                    Product p = dataSnapShot.getValue(Product.class);
+                    CustProduct p = dataSnapShot.getValue(CustProduct.class);
+
                     Cart.add(p);
                 }
                 adapter.notifyDataSetChanged();

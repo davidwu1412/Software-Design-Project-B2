@@ -9,12 +9,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.fileioexample.store.Product;
+import com.example.fileioexample.store.Store;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import java.util.ArrayList;
 
 public class Cust_StoreList extends AppCompatActivity {
 
@@ -34,7 +35,7 @@ public class Cust_StoreList extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         StoreList = new ArrayList<Store>();
-        adapter = new CustStoreAdapter(this.StoreList);
+        adapter = new CustStoreAdapter(this,StoreList);
         recyclerView.setAdapter(adapter);
 
         database.addValueEventListener(new ValueEventListener() {

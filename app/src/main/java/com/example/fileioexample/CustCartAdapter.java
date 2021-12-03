@@ -10,15 +10,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fileioexample.store.Product;
-import com.google.firebase.database.core.view.View;
+import android.view.View;
 
 import java.util.ArrayList;
 
 public class CustCartAdapter extends RecyclerView.Adapter<CustCartAdapter.CustCartViewHolder> {
     Context context;
-    ArrayList<Product> Cart;
+    ArrayList<CustProduct> Cart;
 
-    public CustCartAdapter(Context context, ArrayList<Product> Cart){
+    public CustCartAdapter(Context context, ArrayList<CustProduct> Cart){
         this.context = context;
         this.Cart = Cart;
     }
@@ -26,15 +26,15 @@ public class CustCartAdapter extends RecyclerView.Adapter<CustCartAdapter.CustCa
     @NonNull
     @Override
     public CustCartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.cust_cart_layout.parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.cust_cart_layout,parent,false);
         return new CustCartViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustCartViewHolder holder, int position) {
-        Product p = Cart.get(position);
-        holder.ProdInfo.setText(p.getInfo);
-        holder.PlaceOrder.setText("Add");
+        CustProduct p = Cart.get(position);
+        holder.ProdInfo.setText(p.toString());
+        holder.PlaceOrder.setText("Place Order");
     }
 
     @Override
@@ -47,9 +47,8 @@ public class CustCartAdapter extends RecyclerView.Adapter<CustCartAdapter.CustCa
         Button PlaceOrder;
         public CustCartViewHolder(@NonNull View itemView){
             super(itemView);
-            ProdInfo = itemView.findViewById(R.id.ProductInfo);
+            ProdInfo = itemView.findViewById(R.id.ProdInfo);
             PlaceOrder = itemView.findViewById(R.id.button10);
-
         }
 }
 }

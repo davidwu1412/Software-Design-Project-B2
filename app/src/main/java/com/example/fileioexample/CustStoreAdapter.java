@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.fileioexample.store.Store;
+
 import java.util.ArrayList;
 
 public class CustStoreAdapter extends RecyclerView.Adapter<CustStoreAdapter.CustStoreViewHolder>{
@@ -26,14 +28,14 @@ public class CustStoreAdapter extends RecyclerView.Adapter<CustStoreAdapter.Cust
     @NonNull
     @Override
     public CustStoreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.cust_store_layout.parent,false);
+        View v = LayoutInflater.from(context).inflate(R.layout.cust_store_layout,parent,false);
         return new CustStoreViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CustStoreViewHolder holder, int position) {
         Store s = StoreList.get(position);
-        holder.StoreInfo.setText(s.getInfo);
+        holder.StoreInfo.setText(s.toString());
         holder.Enter.setText("Enter");
     }
 

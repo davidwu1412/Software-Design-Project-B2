@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.fileioexample.store.Order;
 import com.example.fileioexample.store.Product;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +24,7 @@ public class Cust_Order extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseReference database;
     CustOrderAdapter adapter;
-    ArrayList<Product> Order;
+    ArrayList<CustOrder> Order;
 
 
     @Override
@@ -32,20 +33,20 @@ public class Cust_Order extends AppCompatActivity {
         setContentView(R.layout.activity_cust_order);
 
         recyclerView = findViewById(R.id.CustOrderRecyclerView);
-        database = FirebaseDatabase.getInstance().getReference();
+        database = FirebaseDatabase.getInstance().getReference("stores/owner1/orderList");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        Order = new ArrayList<Product>();
-        adapter = new CustOrderAdapter(this.Order);
+        Order = new ArrayList<CustOrder>();
+        adapter = new CustOrderAdapter(this,Order);
         recyclerView.setAdapter(adapter);
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapShot:snapshot.getChildren()){
-                    Product p = dataSnapShot.getValue(Product.class);
-                    Order.add(p);
+                    CustOrder o = dataSnapShot.getValue(CustOrder.class);
+                    Order.add(o);
                 }
                 adapter.notifyDataSetChanged();
             }
