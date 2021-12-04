@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
+<<<<<<< CustomerScreens
+            android:name=".Cust_Prod"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_StoreList"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_Order"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_Cart"
+=======
             android:name=".CustomerEditProfileActivity"
             android:exported="false" />
         <activity
@@ -23,6 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".OwnerListProductsActivity"
+>>>>>>> Working-Version
             android:exported="false" />
         <activity
             android:name=".OwnerAccountCreationActivity"
