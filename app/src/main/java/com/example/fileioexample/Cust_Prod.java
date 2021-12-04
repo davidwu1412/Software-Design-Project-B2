@@ -23,7 +23,7 @@ public class Cust_Prod extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cust_prod);
+        setContentView(R.layout.nav_cust_prod);
 
         recyclerView = findViewById(R.id.CustProdRecyclerView);
         database = FirebaseDatabase.getInstance().getReference("stores/owner1/availableProducts");

@@ -29,7 +29,7 @@ public class ListStores extends AppCompatActivity implements StoresListAdapter.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_stores);
+        setContentView(R.layout.nav_liststores);
 
         ref = FirebaseDatabase.getInstance().getReference("/accounts/owners/");
         recyclerView = findViewById(R.id.recycler_store);

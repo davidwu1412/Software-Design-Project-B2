@@ -30,7 +30,7 @@ public class Cust_Order extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cust_order);
+        setContentView(R.layout.nav_cust_order);
 
         recyclerView = findViewById(R.id.CustOrderRecyclerView);
         database = FirebaseDatabase.getInstance().getReference("stores/owner1/orderList");

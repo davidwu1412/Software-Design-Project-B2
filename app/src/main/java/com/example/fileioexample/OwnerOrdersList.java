@@ -33,7 +33,7 @@ public class OwnerOrdersList extends AppCompatActivity implements OwnerOrdersLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_orders_list);
+        setContentView(R.layout.nav_ownerorderlist);
 
 
         ref = FirebaseDatabase.getInstance().getReference("/stores/"+ownerName+"/orderList/");

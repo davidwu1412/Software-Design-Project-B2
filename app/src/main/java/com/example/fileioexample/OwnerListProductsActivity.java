@@ -24,7 +24,7 @@ public class OwnerListProductsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_list_products);
+        setContentView(R.layout.nav_orderlistproducts);
 
         ownerName = CurrentUser.username;
         store = CurrentUser.store;
