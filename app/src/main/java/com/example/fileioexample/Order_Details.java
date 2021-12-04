@@ -113,7 +113,7 @@ public class Order_Details extends AppCompatActivity {
     }
 
     public void Click_see_all_orders(){
-        Intent intent = new Intent(this,ListOrders.class);
+        Intent intent = new Intent(this,OwnerOrdersList.class);
         startActivity(intent);
     }
 
