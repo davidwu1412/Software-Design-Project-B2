@@ -21,24 +21,24 @@
         <entry key="..\:/Users/dylin/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_customer_account_creation.xml" value="0.3671875" />
         <entry key="..\:/Users/dylin/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/dylin/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_main.xml" value="0.3671875" />
-        <entry key="app/src/main/res/drawable/ic_menu_camera.xml" value="0.13489583333333333" />
-        <entry key="app/src/main/res/drawable/ic_menu_gallery.xml" value="0.13489583333333333" />
-        <entry key="app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.13489583333333333" />
-        <entry key="app/src/main/res/drawable/side_nav_bar.xml" value="0.13489583333333333" />
-        <entry key="app/src/main/res/layout/activity_customer_account_creation.xml" value="0.12364130434782608" />
-        <entry key="app/src/main/res/layout/activity_list_orders.xml" value="0.12364130434782608" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.12364130434782608" />
-        <entry key="app/src/main/res/layout/activity_nav_origin.xml" value="0.11875" />
-        <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/activity_cart.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_list_orders.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/activity_nav_origin2.xml" value="0.1976313555414923" />
+        <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/app_bar_nav_origin.xml" value="0.11875" />
         <entry key="app/src/main/res/layout/content_nav_origin.xml" value="0.11875" />
-        <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/fragment_logout_cart.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/fragment_see_all_orders.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/fragment_see_all_stores.xml" value="0.11875" />
         <entry key="app/src/main/res/layout/fragment_slideshow.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/fragment_uncomplete_order.xml" value="0.11875" />
+        <entry key="app/src/main/res/layout/frame_cart.xml" value="0.39023877888241476" />
         <entry key="app/src/main/res/layout/nav_header_nav_origin.xml" value="0.11875" />
-        <entry key="app/src/main/res/layout/nav_order_detail.xml" value="0.12364130434782608" />
-        <entry key="app/src/main/res/menu/activity_nav_origin_drawer.xml" value="0.7949306001025794" />
-        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.11875" />
-        <entry key="app/src/main/res/menu/nav_origin.xml" value="0.1999596504649712" />
+        <entry key="app/src/main/res/menu/activity_nav_origin2_drawer.xml" value="0.4650923388569285" />
+        <entry key="app/src/main/res/menu/activity_nav_origin_drawer.xml" value="0.11875" />
+        <entry key="app/src/main/res/menu/nav_origin.xml" value="0.11875" />
+        <entry key="app/src/main/res/menu/nav_origin2.xml" value="0.11875" />
+        <entry key="app/src/main/res/menu/nav_orign2.xml" value="0.23697916666666666" />
       </map>
     </option>
   </component>
