@@ -10,7 +10,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
+<<<<<<< Owner_Orders_List-and-List_Stores
             android:name=".OwnerOrdersList"
+=======
+            android:name=".Cust_Prod"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_StoreList"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_Order"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_Cart"/>
+        <activity
+            android:name=".CustomerEditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerAddNewProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerListProductsActivity"
+>>>>>>> Working-Version
             android:exported="false" />
         <activity
             android:name=".OwnerAccountCreationActivity"

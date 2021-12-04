@@ -8,25 +8,25 @@ public class Store {
     private String storeName;
     private String storeAddress;
     private ArrayList<Product> availableProducts;
-    private ArrayList<Order> orders;
+    private ArrayList<Order> ordersList;
 
     public Store() {
         this.availableProducts = new ArrayList<Product>();
-        this.orders = new ArrayList<Order>();
+        this.ordersList = new ArrayList<Order>();
     }
 
     public Store(String name, String address) {
         this.storeName = name;
         this.storeAddress = address;
         this.availableProducts = new ArrayList<Product>();
-        this.orders = new ArrayList<Order>();
+        this.ordersList = new ArrayList<Order>();
     }
 
     public Store(String name, String address, ArrayList<Product> availableProducts, ArrayList<Order> orders) {
         this.storeName = name;
         this.storeAddress = address;
         this.availableProducts = availableProducts;
-        this.orders = orders;
+        this.ordersList = ordersList;
     }
 
 
@@ -54,12 +54,12 @@ public class Store {
         this.availableProducts = availableProducts;
     }
 
-    public ArrayList<Order> getOrders() {
-        return orders;
+    public ArrayList<Order> getOrdersList() {
+        return ordersList;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
-        this.orders = orders;
+    public void setOrdersList(ArrayList<Order> ordersList) {
+        this.ordersList = ordersList;
     }
 
     @Override
