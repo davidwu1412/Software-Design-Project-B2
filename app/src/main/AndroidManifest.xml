@@ -10,9 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
-<<<<<<< Owner_Orders_List-and-List_Stores
             android:name=".OwnerOrdersList"
-=======
+            android:exported="false" />
+        <activity
             android:name=".Cust_Prod"
             android:exported="false" />
         <activity
@@ -37,7 +37,6 @@
             android:exported="false" />
         <activity
             android:name=".OwnerListProductsActivity"
->>>>>>> Working-Version
             android:exported="false" />
         <activity
             android:name=".OwnerAccountCreationActivity"
