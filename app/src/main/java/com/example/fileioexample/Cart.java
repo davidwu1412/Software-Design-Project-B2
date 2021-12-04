@@ -22,7 +22,7 @@ public class Cart extends AppCompatActivity {
         Intent intent = getIntent();
         Current_Order Order = new Current_Order();
 
-        String Owner = Order.Owner;
+        String Owner = Current_Order.Owner;
         TextView textView15 = findViewById(R.id.textView18);
         textView15.setText("Store: "+ Owner);
 

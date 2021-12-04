@@ -11,9 +11,6 @@
             android:id="@id/seeAllOrders"
             android:title="See All Orders" />
         <item
-            android:id="@id/uncompleteOrder"
-            android:title="Uncomplete Order" />
-        <item
             android:id="@id/logoutCart"
             android:title="Logout" />
     </group>

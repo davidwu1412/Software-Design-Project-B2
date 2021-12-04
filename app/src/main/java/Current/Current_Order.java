@@ -1,19 +1,19 @@
 package Current;
 
 public class Current_Order {
-    public String Owner = "owner1";
-    public String OrderToken = "0";
-    public String Customer = "customer1";
+    public static String Owner = "owner1";
+    public static String OrderToken = "0";
+    public static String Customer = "customer1";
 
-    public void setOwner(String owner) {
+    public static void setOwner(String owner) {
         Owner = owner;
     }
 
-    public void setCustomer(String customer) {
+    public static void setCustomer(String customer) {
         Customer = customer;
     }
 
-    public void setOrderToken(String orderToken) {
+    public static void setOrderToken(String orderToken) {
         OrderToken = orderToken;
     }
 }

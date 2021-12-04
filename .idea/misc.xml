@@ -22,8 +22,10 @@
         <entry key="..\:/Users/dylin/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_login.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/dylin/AndroidStudioProjects/Software-Design-Project-B2/app/src/main/res/layout/activity_main.xml" value="0.3671875" />
         <entry key="app/src/main/res/layout/activity_cart.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_cust_cart.xml" value="0.12364130434782608" />
         <entry key="app/src/main/res/layout/activity_list_orders.xml" value="0.11875" />
-        <entry key="app/src/main/res/layout/activity_nav_origin2.xml" value="0.1976313555414923" />
+        <entry key="app/src/main/res/layout/activity_nav_origin.xml" value="0.5048638539870648" />
+        <entry key="app/src/main/res/layout/activity_nav_origin2.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_order_details.xml" value="0.1" />
         <entry key="app/src/main/res/layout/app_bar_nav_origin.xml" value="0.11875" />
         <entry key="app/src/main/res/layout/content_nav_origin.xml" value="0.11875" />
@@ -36,6 +38,7 @@
         <entry key="app/src/main/res/layout/nav_header_nav_origin.xml" value="0.11875" />
         <entry key="app/src/main/res/menu/activity_nav_origin2_drawer.xml" value="0.4650923388569285" />
         <entry key="app/src/main/res/menu/activity_nav_origin_drawer.xml" value="0.11875" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/menu/nav_origin.xml" value="0.11875" />
         <entry key="app/src/main/res/menu/nav_origin2.xml" value="0.11875" />
         <entry key="app/src/main/res/menu/nav_orign2.xml" value="0.23697916666666666" />
