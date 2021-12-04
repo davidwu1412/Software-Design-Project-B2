@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fileioexample" >
+    package="com.example.fileioexample">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FileIOExample" >
+        android:theme="@style/Theme.FileIOExample">
+        <activity
+            android:name=".CustomerEditProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".OwnerProfileActivity"
             android:exported="false" />
@@ -32,7 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".Order_Details"
-            android:parentActivityName=".ListProd" >
+            android:parentActivityName=".ListProd">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -41,7 +44,7 @@
         </activity> <!-- make List product screen the parent screen of Order_details screen -->
         <activity
             android:name=".ListProd"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
@@ -50,7 +53,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,12 +1,15 @@
 package com.example.fileioexample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.fileioexample.account.CustomerAccount;
 import com.example.fileioexample.login.LoginContract;
 import com.example.fileioexample.login.LoginModel;
 import com.example.fileioexample.login.LoginPresenter;
@@ -16,6 +19,9 @@ import com.example.fileioexample.store.Store;
 import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.DatabaseUtils;
 import com.example.fileioexample.utils.Popup;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -91,7 +97,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void customerLogin() {
         //Start the first customer activity
-        Intent intent = new Intent(this,ListProd.class);
+        CurrentUser.username = getUsername();
+        readCustomerAccountInfo();
+        Intent intent = new Intent(this,CustomerProfileActivity.class);
         startActivity(intent);
     }
 
@@ -100,8 +108,32 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         //Start the first owner activity
         CurrentUser.username = getUsername();
         DatabaseUtils.setupCurrentStore();
+        //Intent intent = new Intent(this,OwnerProfileActivity.class); //Test profile screen
         Intent intent = new Intent(this,OwnerListProductsActivity.class);
         startActivity(intent);
+    }
+
+    //Read the customer account info and store is to the customer field in the CurrentUser class
+    private void readCustomerAccountInfo(){
+
+        //Read the customer data when the activity is started
+        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(CurrentUser.username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("demo", "Error getting data", task.getException());
+                }
+                else {
+                    if(task.getResult().getValue() != null) {
+                        CurrentUser.customer = task.getResult().getValue(CustomerAccount.class);
+                        Log.i("demo", "CurrentUser.customer = " + CurrentUser.customer.toString());
+                    } else {
+                        CurrentUser.customer = new CustomerAccount(CurrentUser.username);
+                    }
+                }
+            }
+        });
+
     }
 
     //This method is to be used for testing the ability to write to the database

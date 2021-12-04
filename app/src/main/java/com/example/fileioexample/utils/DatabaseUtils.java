@@ -31,7 +31,6 @@ public class DatabaseUtils {
 
     public static final DatabaseReference STORES_REFERENCE = FirebaseDatabase.getInstance().getReference("stores");
 
-
     //This method checks if a username is taken by an existing account in the database
     //It returns true if the username is valid (not taken) and false if it is taken
     public static boolean validateUsername(String username){
@@ -83,6 +82,13 @@ public class DatabaseUtils {
 
         DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(username).setValue(new CustomerAccount(username));
         DatabaseUtils.PASSWORDS_REF.child(username).setValue(password);
+
+    }
+
+    //Write customer account to the database
+    public static void updateCustomerProfile(String username, String firstName, String lastName, String email){
+
+        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(username).setValue(new CustomerAccount(username, firstName, lastName, email));
 
     }
 
