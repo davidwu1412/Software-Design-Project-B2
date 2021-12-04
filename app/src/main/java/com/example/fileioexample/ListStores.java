@@ -7,22 +7,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-
-//import com.example.fileioexample.store.Store;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Current.Current_Store;
 
 public class ListStores extends AppCompatActivity implements StoresListAdapter.OnStoreListener {
 
@@ -65,11 +59,12 @@ public class ListStores extends AppCompatActivity implements StoresListAdapter.O
 
     @Override
     public void onStoreClick(int position) {
-        String a = storeObjList.get(position).getStoreAddress();//gives reference to the object selected in the activity
+        //String a = storeObjList.get(position).getStoreAddress();//gives reference to the object selected in the activity
+        Current_Store.setStoreName(storeObjList.get(position).getStoreName());
+        Current_Store.setAddress(storeObjList.get(position).getStoreAddress());
         Intent intent = new Intent(this, OwnerOrdersList.class);
         startActivity(intent);
 
-        Log.d("TAG", "onStoreClick: clicked "+a);
     }
 
 }

@@ -13,9 +13,6 @@
             android:name=".OwnerOrdersList"
             android:exported="false" />
         <activity
-            android:name=".ListOrders"
-            android:exported="false" />
-        <activity
             android:name=".OwnerAccountCreationActivity"
             android:exported="false" />
         <activity

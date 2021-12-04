@@ -31,7 +31,6 @@ public class OwnerOrdersListAdapter extends RecyclerView.Adapter<OwnerOrdersList
         OrderObj orderObj = orderObjList.get(position);
         if (orderObj.getFulfilled().equals("false")){
             orderObj.setFulfilled("Incomplete");
-            Log.d("STATUS", orderObj.getFulfilled());
         }else{
             orderObj.setFulfilled("Completed");
         }
