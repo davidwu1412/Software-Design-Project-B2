@@ -7,10 +7,11 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartrv"
         android:layout_width="363dp"
         android:layout_height="683dp"
-        android:scrollbars = "vertical"
-        app:layoutManager = "LinearLayoutManager"
+        android:scrollbars="vertical"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
