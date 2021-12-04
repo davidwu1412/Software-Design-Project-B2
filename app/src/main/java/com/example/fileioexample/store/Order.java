@@ -8,7 +8,7 @@ public class Order {
     private ArrayList<Product> products;
     private double totalCost;
     private boolean fulfilled;
-    private String storeName;
+    private String customerName;
     private int orderNumber;
 
     //Optional fields (these may not be used in the final product)
@@ -20,11 +20,11 @@ public class Order {
         products = new ArrayList<Product>();
     }
 
-    public Order(ArrayList<Product> products, double totalCost, boolean fulfilled, String storeName, int orderNumber) {
+    public Order(ArrayList<Product> products, double totalCost, boolean fulfilled, String customerName, int orderNumber) {
         this.products = products;
         this.totalCost = totalCost;
         this.fulfilled = fulfilled;
-        this.storeName = storeName;
+        this.customerName = customerName;
         this.orderNumber = orderNumber;
     }
 
@@ -35,6 +35,8 @@ public class Order {
         for(Product p: getProducts()){
             newTotalCost += p.getPrice() * p.getQuantity();
         }
+
+        newTotalCost = (double) (Math.round(newTotalCost * 100)) / 100; //Round to 2 decimal places
 
         setTotalCost(newTotalCost);
 
@@ -65,12 +67,12 @@ public class Order {
         this.fulfilled = fulfilled;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
     public int getOrderNumber() {
@@ -112,12 +114,12 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Double.compare(order.totalCost, totalCost) == 0 && fulfilled == order.fulfilled && orderNumber == order.orderNumber && products.equals(order.products) && storeName.equals(order.storeName);
+        return Double.compare(order.totalCost, totalCost) == 0 && fulfilled == order.fulfilled && orderNumber == order.orderNumber && products.equals(order.products) && customerName.equals(order.customerName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(products, totalCost, fulfilled, storeName, orderNumber);
+        return Objects.hash(products, totalCost, fulfilled, customerName, orderNumber);
     }
 
     @Override
@@ -126,7 +128,7 @@ public class Order {
                 "products=" + products +
                 ", totalCost=" + totalCost +
                 ", fulfilled=" + fulfilled +
-                ", storeName='" + storeName + '\'' +
+                ", storeName='" + customerName + '\'' +
                 ", orderNumber=" + orderNumber +
                 ", datePlaced='" + datePlaced + '\'' +
                 ", timePlaced='" + timePlaced + '\'' +
