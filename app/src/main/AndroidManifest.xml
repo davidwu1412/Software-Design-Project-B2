@@ -10,39 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FileIOExample">
         <activity
-            android:name=".OwnerOrdersList"
-            android:exported="false" />
-        <activity
-            android:name=".Cust_Prod"
-            android:exported="false" />
-        <activity
-            android:name=".Cust_StoreList"
-            android:exported="false" />
-        <activity
-            android:name=".Cust_Order"
-            android:exported="false" />
-        <activity
-            android:name=".Cust_Cart"/>
-        <activity
-            android:name=".CustomerEditProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OwnerProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OwnerAddNewProductActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CustomerProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OwnerListProductsActivity"
-            android:exported="false" />
+            android:name=".NavOriginActivity"
+            android:exported="false"
+            android:label="@string/title_activity_nav_origin"
+            android:theme="@style/Theme.FileIOExample.NoActionBar" />
         <activity
             android:name=".OwnerAccountCreationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ListStores"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -52,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".Order_Details"
-            android:parentActivityName=".ListProd">
+            android:parentActivityName=".MainActivity">
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
