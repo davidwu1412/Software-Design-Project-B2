@@ -8,8 +8,8 @@ public class Order {
     private ArrayList<Product> products;
     private double totalCost;
     private boolean fulfilled;
-    private String customerName;
-    private int orderNumber;
+    private String customerUsername;
+    private int orderId;
 
     //Optional fields (these may not be used in the final product)
     private String datePlaced;
@@ -20,12 +20,12 @@ public class Order {
         products = new ArrayList<Product>();
     }
 
-    public Order(ArrayList<Product> products, double totalCost, boolean fulfilled, String customerName, int orderNumber) {
+    public Order(ArrayList<Product> products, double totalCost, boolean fulfilled, String customerUsername, int orderId) {
         this.products = products;
         this.totalCost = totalCost;
         this.fulfilled = fulfilled;
-        this.customerName = customerName;
-        this.orderNumber = orderNumber;
+        this.customerUsername = customerUsername;
+        this.orderId = orderId;
     }
 
     public void updateTotalCost() {
@@ -67,20 +67,20 @@ public class Order {
         this.fulfilled = fulfilled;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getCustomerUsername() {
+        return customerUsername;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCustomerUsername(String customerUsername) {
+        this.customerUsername = customerUsername;
     }
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getDatePlaced() {
@@ -114,12 +114,12 @@ public class Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Double.compare(order.totalCost, totalCost) == 0 && fulfilled == order.fulfilled && orderNumber == order.orderNumber && products.equals(order.products) && customerName.equals(order.customerName);
+        return Double.compare(order.totalCost, totalCost) == 0 && fulfilled == order.fulfilled && orderId == order.orderId && products.equals(order.products) && customerUsername.equals(order.customerUsername);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(products, totalCost, fulfilled, customerName, orderNumber);
+        return Objects.hash(products, totalCost, fulfilled, customerUsername, orderId);
     }
 
     @Override
@@ -128,8 +128,8 @@ public class Order {
                 "products=" + products +
                 ", totalCost=" + totalCost +
                 ", fulfilled=" + fulfilled +
-                ", storeName='" + customerName + '\'' +
-                ", orderNumber=" + orderNumber +
+                ", storeName='" + customerUsername + '\'' +
+                ", orderNumber=" + orderId +
                 ", datePlaced='" + datePlaced + '\'' +
                 ", timePlaced='" + timePlaced + '\'' +
                 ", timeCompleted='" + timeCompleted + '\'' +

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     // these are for jumping into new activities after login or register
     public void TestYourCode(View view){
         //jump to some view to test your activities
-        Intent intent = new Intent(this,Order_Details.class);
+        Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
 

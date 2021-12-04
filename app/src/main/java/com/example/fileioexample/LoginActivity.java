@@ -136,6 +136,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EditText usernameText = (EditText) findViewById(R.id.editTextTextPersonName5);
+        usernameText.setText("");
+        EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword5);
+        passwordText.setText("");
+    }
+
     //This method is to be used for testing the ability to write to the database
     public void databaseTest(){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
@@ -146,8 +155,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         store.getAvailableProducts().add(new Product("chips", "lays", 0.99));
         store.getAvailableProducts().add(new Product("cola", "pepsi", 1.99));
         Order order1 = new Order();
-        order1.setCustomerName("test3");
-        order1.setOrderNumber(1);
+        order1.setCustomerUsername("test3");
+        order1.setOrderId(1);
         order1.setFulfilled(false);
         order1.getProducts().add(new Product("cola", "pepsi", 1.99, 2));
         order1.getProducts().add(new Product("chips", "lays", 0.99, 3));

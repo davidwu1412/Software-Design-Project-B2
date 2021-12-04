@@ -18,7 +18,39 @@
             android:label="@string/title_activity_nav_origin"
             android:theme="@style/Theme.FileIOExample.NoActionBar" />
         <activity
+            android:name=".OwnerOrdersList"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_Prod"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_StoreList"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_Order"
+            android:exported="false" />
+        <activity
+            android:name=".Cust_Cart"/>
+        <activity
+            android:name=".CustomerEditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerAddNewProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OwnerListProductsActivity"
+            android:exported="false" />
+        <activity
             android:name=".OwnerAccountCreationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListStores"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

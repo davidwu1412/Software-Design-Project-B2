@@ -1,11 +1,15 @@
 package com.example.fileioexample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.NavigationUtils;
+import com.google.android.material.navigation.NavigationView;
 
 public class OwnerProfileActivity extends AppCompatActivity {
 
@@ -15,6 +19,33 @@ public class OwnerProfileActivity extends AppCompatActivity {
         setContentView(R.layout.nav_ownerprofile);
 
         setupCustomerProfileText();
+
+        NavigationUtils.currentActivity = this;
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId()==R.id.nav_list_products){
+                    NavigationUtils.ownerClickListProduct();
+                }
+                if(item.getItemId()==R.id.nav_see_all_orders){
+                    NavigationUtils.ownerClickSeeAllOrders();
+                }
+                if(item.getItemId()==R.id.nav_profile){
+                    NavigationUtils.ownerClickProfile();
+                }
+                if(item.getItemId()==R.id.nav_logout){
+                    NavigationUtils.ownerClickLogout();
+                }
+                return true;
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NavigationUtils.currentActivity = this;
     }
 
     //Set the text fields of the profile screen
