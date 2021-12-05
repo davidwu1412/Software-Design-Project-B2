@@ -97,16 +97,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void customerLogin() {
         //Start the first customer activity
-        CurrentUser.username = getUsername();
+        CurrentUser.customerUsername = getUsername();
         readCustomerAccountInfo();
-        Intent intent = new Intent(this,CustomerProfileActivity.class);
+        Intent intent = new Intent(this,ListStores.class);
         startActivity(intent);
     }
 
     @Override
     public void ownerLogin() {
         //Start the first owner activity
-        CurrentUser.username = getUsername();
+        CurrentUser.ownerUsername = getUsername();
         DatabaseUtils.setupCurrentStore();
         //Intent intent = new Intent(this,OwnerProfileActivity.class); //Test profile screen
         Intent intent = new Intent(this,OwnerListProductsActivity.class);
@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private void readCustomerAccountInfo(){
 
         //Read the customer data when the activity is started
-        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(CurrentUser.username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(CurrentUser.customerUsername).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -128,7 +128,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                         CurrentUser.customer = task.getResult().getValue(CustomerAccount.class);
                         Log.i("demo", "CurrentUser.customer = " + CurrentUser.customer.toString());
                     } else {
-                        CurrentUser.customer = new CustomerAccount(CurrentUser.username);
+                        CurrentUser.customer = new CustomerAccount(CurrentUser.customerUsername);
                     }
                 }
             }

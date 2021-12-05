@@ -10,8 +10,8 @@
         android:id="@+id/button5"
         android:layout_width="0dp"
         android:layout_height="78dp"
-        android:onClick="gotoCust_StoreList"
-        android:text="Stores"
+        android:onClick="gotoCust_Prod"
+        android:text="See Products"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button9"
         app:layout_constraintStart_toStartOf="parent" />

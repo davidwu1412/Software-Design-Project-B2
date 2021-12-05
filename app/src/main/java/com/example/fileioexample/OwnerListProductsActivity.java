@@ -1,23 +1,18 @@
 package com.example.fileioexample;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 
-import com.example.fileioexample.store.Product;
 import com.example.fileioexample.store.Store;
 import com.example.fileioexample.ui.ownerListProducts.OwnerListProductsAdapter;
 import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.NavigationUtils;
 import com.example.fileioexample.utils.Popup;
-import com.google.android.material.navigation.NavigationView;
 
 public class OwnerListProductsActivity extends AppCompatActivity {
 
@@ -30,7 +25,7 @@ public class OwnerListProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_orderlistproducts);
 
-        ownerName = CurrentUser.username;
+        ownerName = CurrentUser.ownerUsername;
         store = CurrentUser.store;
         recyclerView = findViewById(R.id.recyclerView);
 

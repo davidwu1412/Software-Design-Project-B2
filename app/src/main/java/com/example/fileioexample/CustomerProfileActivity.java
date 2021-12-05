@@ -1,25 +1,14 @@
 package com.example.fileioexample;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.fileioexample.account.CustomerAccount;
-import com.example.fileioexample.login.LoginModel;
 import com.example.fileioexample.utils.CurrentUser;
-import com.example.fileioexample.utils.DatabaseUtils;
 import com.example.fileioexample.utils.Popup;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-
-import java.util.HashMap;
 
 public class CustomerProfileActivity extends AppCompatActivity {
 
@@ -34,7 +23,7 @@ public class CustomerProfileActivity extends AppCompatActivity {
     //Set the text fields of the profile screen
     private void setupCustomerProfileText(){
         TextView usernameText = (TextView) findViewById(R.id.customerProfile_username);
-        usernameText.setText(CurrentUser.username);
+        usernameText.setText(CurrentUser.ownerUsername);
         TextView firstNameText = (TextView) findViewById(R.id.customerProfile_firstName);
         if(CurrentUser.customer.getFirstName() != null)
             firstNameText.setText(CurrentUser.customer.getFirstName());

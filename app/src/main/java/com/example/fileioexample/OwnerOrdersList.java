@@ -7,24 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
 
 import com.example.fileioexample.store.Order;
 import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.NavigationUtils;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import Current.Current_Order;
-import Current.Current_Owner;
 
 public class OwnerOrdersList extends AppCompatActivity implements OwnerOrdersListAdapter.OnOrderListener {
 
@@ -43,7 +34,7 @@ public class OwnerOrdersList extends AppCompatActivity implements OwnerOrdersLis
 
 
         //ref = FirebaseDatabase.getInstance().getReference("/stores/"+ownerName+"/orderList/");
-        ref = FirebaseDatabase.getInstance().getReference("/stores/"+ CurrentUser.username +"/orderList/");
+        ref = FirebaseDatabase.getInstance().getReference("/stores/"+ CurrentUser.ownerUsername +"/orderList/");
         recyclerView = findViewById(R.id.ordersList_recycler);
 
         // displays the recyclerview linearly(vertical)
@@ -66,15 +57,15 @@ public class OwnerOrdersList extends AppCompatActivity implements OwnerOrdersLis
 
             }
         });*/
-        /*ref.addValueEventListener(new ValueEventListener() {
+        ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                orderList.clear();
+                CurrentUser.store.getOrdersList().clear();
                 for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
                     Order order = dataSnapshot1.getValue(Order.class);
-                    orderList.add(order);
+                    CurrentUser.store.getOrdersList().add(order);
                 }
-                adapter = new OwnerOrdersListAdapter(OwnerOrdersList.this, orderList, OwnerOrdersList.this::onOrdersClick);
+                adapter = new OwnerOrdersListAdapter(OwnerOrdersList.this, CurrentUser.store.getOrdersList(), OwnerOrdersList.this::onOrdersClick);
                 recyclerView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
@@ -83,7 +74,7 @@ public class OwnerOrdersList extends AppCompatActivity implements OwnerOrdersLis
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
 
         adapter = new OwnerOrdersListAdapter(OwnerOrdersList.this, CurrentUser.store.getOrdersList(), OwnerOrdersList.this::onOrdersClick);
         recyclerView.setAdapter(adapter);
@@ -112,7 +103,7 @@ public class OwnerOrdersList extends AppCompatActivity implements OwnerOrdersLis
         Current_Order.setCustomer(orderList.get(position).getCustomerUsername());*/
 
         CurrentUser.currentOrderToken.setOrderId(CurrentUser.store.getOrdersList().get(position).getOrderId());
-        CurrentUser.currentOrderToken.setOwner(CurrentUser.username);
+        CurrentUser.currentOrderToken.setOwner(CurrentUser.ownerUsername);
 
         Intent intent = new Intent(this, Order_Details.class);
         //Intent intent = new Intent(this, ListStores.class);

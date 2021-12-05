@@ -51,7 +51,7 @@ public class OwnerProfileActivity extends AppCompatActivity {
     //Set the text fields of the profile screen
     private void setupCustomerProfileText(){
         TextView usernameText = (TextView) findViewById(R.id.ownerProfile_username);
-        usernameText.setText(CurrentUser.username);
+        usernameText.setText(CurrentUser.ownerUsername);
         TextView storeNameText = (TextView) findViewById(R.id.ownerProfile_storeName);
         storeNameText.setText(CurrentUser.store.getName());
         TextView storeAddressText = (TextView) findViewById(R.id.ownerProfile_storeAddress);

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -16,7 +15,6 @@ import com.example.fileioexample.store.Order;
 import com.example.fileioexample.store.Product;
 import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.NavigationUtils;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,8 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import Current.Current_Order;
 
 public class Order_Details extends AppCompatActivity {
     ListView listview;
@@ -69,7 +65,7 @@ public class Order_Details extends AppCompatActivity {
         }*/
 
         DatabaseReference Database = FirebaseDatabase.getInstance().getReference().child("stores")
-                .child(CurrentUser.username).child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("products");
+                .child(CurrentUser.ownerUsername).child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("products");
         Database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -114,14 +110,14 @@ public class Order_Details extends AppCompatActivity {
                 if(checkBox.isChecked()){
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = database.getReference();
-                    dbRef = database.getReference().child("stores").child(CurrentUser.username)
+                    dbRef = database.getReference().child("stores").child(CurrentUser.ownerUsername)
                             .child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("fulfilled");
                     dbRef.setValue(true);
                 }
                 else{
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = database.getReference();
-                    dbRef = database.getReference().child("stores").child(CurrentUser.username)
+                    dbRef = database.getReference().child("stores").child(CurrentUser.ownerUsername)
                             .child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("fulfilled");
                     dbRef.setValue(false);
                 }
