@@ -124,70 +124,6 @@ public class DatabaseUtils {
         });
 
         //Setup the initial read for the owner data
-        /*DatabaseUtils.STORES_REFERENCE.child(CurrentUser.username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("demo", "Error getting data", task.getException());
-                }
-                else {
-                    if(task.getResult().getValue() != null) {
-                        HashMap<String, Object> storeData = (HashMap<String, Object>) task.getResult().getValue();
-
-                        //TEST
-                        Log.i("demo", "storeData availableProducts class type = " + storeData.get("availableProducts").getClass().getName());
-                        Log.i("demo", "storeData availableProducts = " + storeData.get("availableProducts").toString());
-
-                        //CurrentUser.store.setAvailableProducts((ArrayList<Product>)storeData.get("availableProducts"));
-
-                        //Fill the products
-                        HashMap<String, Object> availableProducts = (HashMap<String, Object>) storeData.get("availableProducts"); //This is apparently an arraylist
-                        for(Map.Entry<String, Object> entry: availableProducts.entrySet()){
-                            HashMap<String, Object> productMap = (HashMap<String, Object>) entry.getValue();
-                            String brand = (String) productMap.get("brand");
-                            String name = (String) productMap.get("name");
-                            double price = (double) productMap.get("price");
-                            Product product = new Product(name, brand, price);
-                            CurrentUser.store.getAvailableProducts().add(product);
-                        }
-
-                        //TEST
-                        Log.i("demo", "storeData orderList class type = " + storeData.get("orderList").getClass().getName());
-                        Log.i("demo", "storeData orderList = " + storeData.get("orderList").toString());
-
-                        //CurrentUser.store.setOrdersList((ArrayList<Order>)storeData.get("orderList"));
-
-                        //Fill the orders
-                        HashMap<String, Object> orderListMap = (HashMap<String, Object>) storeData.get("orderList");
-                        for(Map.Entry<String, Object> entry: orderListMap.entrySet()){
-
-                            HashMap<String, Object> orderMap = (HashMap<String, Object>) entry.getValue();
-                            String customerName = (String) orderMap.get("customerName");
-                            boolean fulfilled = (boolean) orderMap.get("fulfilled");
-                            int orderNumber = (int) orderMap.get("orderNumber");
-                            double totalCost = (double) orderMap.get("totalCost");
-                            ArrayList<Product> products = new ArrayList<Product>();
-
-                            HashMap<String, Object> orderProducts = (HashMap<String, Object>) orderListMap.get("products");
-                            for(Map.Entry<String, Object> productEntry: orderProducts.entrySet()){
-                                HashMap<String, Object> productMap = (HashMap<String, Object>) entry.getValue();
-                                String brand = (String) productMap.get("brand");
-                                String name = (String) productMap.get("name");
-                                double price = (double) productMap.get("price");
-                                Product product = new Product(name, brand, price);
-                                products.add(product);
-                            }
-
-                            Order order = new Order(products, totalCost, fulfilled, customerName, orderNumber);
-                            CurrentUser.store.getOrdersList().add(order);
-                        }
-
-                    }
-                }
-            }
-        });*/
-
-        //Setup the initial read for the owner data
         DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("availableProducts").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -243,26 +179,6 @@ public class DatabaseUtils {
         });
 
     }
-
-    /*public static void updateCurrentStoreOrders(RecyclerView.Adapter adapter){
-        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("orderList").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("demo", "Error getting data", task.getException());
-                }
-                else {
-                    if(task.getResult().getValue() != null) {
-                        GenericTypeIndicator<ArrayList<Order>> t = new GenericTypeIndicator<ArrayList<Order>>() {};
-                        CurrentUser.store.setOrdersList(task.getResult().getValue(t));
-                        CurrentUser.store.getOrdersList().removeAll(Collections.singleton(null));
-                    }
-                }
-            }
-        });
-
-        adapter.notifyDataSetChanged();
-    }*/
 
     public static void customerSetupCurrentStore(RecyclerView.Adapter adapter){
         DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("orderList").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {

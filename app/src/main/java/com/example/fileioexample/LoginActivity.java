@@ -37,8 +37,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         //Setup the presenter and model classes which sets up the database listeners
         presenter = new LoginPresenter(new LoginModel(), this);
 
-        //Test database
-        //databaseTest();
     }
 
     public void createCustomerAccount(View view){
@@ -143,27 +141,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         usernameText.setText("");
         EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword5);
         passwordText.setText("");
-    }
-
-    //This method is to be used for testing the ability to write to the database
-    public void databaseTest(){
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        /*ref.child("accounts").child("customers").child("test").setValue(new CustomerAccount("test"));
-        OwnerAccount owner = new OwnerAccount("test2", "storeName", "address");
-        ref.child("accounts").child("owners").child("test2").setValue(owner);*/
-        Store store = new Store("storeName", "address2");
-        store.getAvailableProducts().add(new Product("chips", "lays", 0.99));
-        store.getAvailableProducts().add(new Product("cola", "pepsi", 1.99));
-        Order order1 = new Order();
-        order1.setCustomerUsername("test3");
-        order1.setOrderId(1);
-        order1.setFulfilled(false);
-        order1.getProducts().add(new Product("cola", "pepsi", 1.99, 2));
-        order1.getProducts().add(new Product("chips", "lays", 0.99, 3));
-        order1.updateTotalCost();
-        store.getOrdersList().add(order1);
-        //ref.child("stores").child("test4").setValue(store);
-        DatabaseUtils.writeStoreToDatabase("test4", store);
     }
 
 }
