@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // these are for jumping into new activities after login or register
-    public void TestYourCode(View view){
+    public void startApp(View view){
         //jump to some view to test your activities
         //CurrentUser.ownerUsername = "test4";
         //DatabaseUtils.setupCurrentStore();

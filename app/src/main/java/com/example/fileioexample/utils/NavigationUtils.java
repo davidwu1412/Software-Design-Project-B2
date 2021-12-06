@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fileioexample.CustomerProfileActivity;
+import com.example.fileioexample.ListStores;
 import com.example.fileioexample.LoginActivity;
 import com.example.fileioexample.OwnerListProductsActivity;
 import com.example.fileioexample.OwnerOrdersList;
@@ -71,6 +73,48 @@ public class NavigationUtils {
     }
 
     public static void ownerClickLogout(){
+        Intent intent = new Intent(currentActivity, LoginActivity.class);
+        currentActivity.startActivity(intent);
+    }
+
+    public static void setupCustomerNavigationMenu(AppCompatActivity activity){
+        NavigationUtils.currentActivity = activity;
+        NavigationView navigationView = currentActivity.findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                if(item.getItemId()==R.id.seeAllStores){
+                    NavigationUtils.customerClickSeeAllStores();
+                }
+                if(item.getItemId()==R.id.customerProfile){
+                    NavigationUtils.customerClickProfile();
+                }
+                if(item.getItemId()==R.id.logoutCart){
+                    NavigationUtils.customerClickLogout();
+                }
+                return true;
+            }
+        });
+    }
+
+    public static void customerClickSeeAllStores(){
+        if(!(currentActivity instanceof ListStores) || ALLOW_SELF_NAVIGATION) {
+            //DatabaseUtils.updateCurrentStoreOrders();
+            CurrentUser.cart.clear();
+            Intent intent = new Intent(currentActivity, ListStores.class);
+            currentActivity.startActivity(intent);
+        }
+    }
+
+    public static void customerClickProfile(){
+        if(!(currentActivity instanceof CustomerProfileActivity) || ALLOW_SELF_NAVIGATION) {
+            //DatabaseUtils.updateCurrentStoreOrders();
+            Intent intent = new Intent(currentActivity, CustomerProfileActivity.class);
+            currentActivity.startActivity(intent);
+        }
+    }
+
+    public static void customerClickLogout(){
         Intent intent = new Intent(currentActivity, LoginActivity.class);
         currentActivity.startActivity(intent);
     }

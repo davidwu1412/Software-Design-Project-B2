@@ -23,7 +23,7 @@ public class CustomerEditProfileActivity extends AppCompatActivity {
 
     private void setupUsernameText(){
         TextView usernameText = (TextView) findViewById(R.id.customerEditProfile_username);
-        usernameText.setText(CurrentUser.ownerUsername);
+        usernameText.setText(CurrentUser.customerUsername);
     }
 
     //Save the changes to the profile using values entered by the user
@@ -43,10 +43,10 @@ public class CustomerEditProfileActivity extends AppCompatActivity {
         }
 
         //Update the customer object
-        CurrentUser.customer = new CustomerAccount(CurrentUser.ownerUsername, firstName, lastName, email);
+        CurrentUser.customer = new CustomerAccount(CurrentUser.customerUsername, firstName, lastName, email);
 
         //Write the new account details to the database
-        DatabaseUtils.updateCustomerProfile(CurrentUser.ownerUsername, firstName, lastName, email);
+        DatabaseUtils.updateCustomerProfile(CurrentUser.customerUsername, firstName, lastName, email);
         setResult(1); //Set result code to 1 to indicate account was successfully created
         finish();
     }

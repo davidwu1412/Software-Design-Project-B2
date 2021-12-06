@@ -13,6 +13,7 @@ import com.example.fileioexample.store.Product;
 import com.example.fileioexample.store.Store;
 import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.DatabaseUtils;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,6 +80,7 @@ public class ListStores extends AppCompatActivity implements StoresListAdapter.O
 
             }
         });*/
+        NavigationUtils.setupCustomerNavigationMenu(this);
     }
 
     @Override

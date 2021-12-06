@@ -15,6 +15,7 @@ import com.example.fileioexample.store.OrderToken;
 import com.example.fileioexample.store.Product;
 import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.DatabaseUtils;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -108,6 +109,7 @@ public class Cust_Order extends AppCompatActivity {
             }
         });
 
+        NavigationUtils.setupCustomerNavigationMenu(this);
     }
 
     public void updateOrderScreen(){

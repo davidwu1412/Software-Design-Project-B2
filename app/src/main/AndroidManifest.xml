@@ -60,13 +60,14 @@
             android:exported="false" />
         <activity
             android:name=".Order_Details"
-            android:parentActivityName=".MainActivity">
+            android:exported="false" />
+            <!-- android:parentActivityName=".MainActivity"> -->
 
             <!-- The meta-data tag is required if you support API level 15 and lower -->
-            <meta-data
+            <!-- <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity> <!-- make List product screen the parent screen of Order_details screen -->
+                android:value=".MainActivity" /> -->
+        <!-- </activity> --> <!-- make List product screen the parent screen of Order_details screen -->
         <activity
             android:name=".ListProd"
             android:parentActivityName=".MainActivity">

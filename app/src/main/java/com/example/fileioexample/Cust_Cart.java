@@ -15,6 +15,7 @@ import com.example.fileioexample.store.OrderToken;
 import com.example.fileioexample.store.Store;
 import com.example.fileioexample.utils.CurrentUser;
 import com.example.fileioexample.utils.DatabaseUtils;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.example.fileioexample.utils.Popup;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -70,7 +71,7 @@ public class Cust_Cart extends AppCompatActivity {
 
             }
         });*/
-
+        NavigationUtils.setupCustomerNavigationMenu(this);
     }
 
     public void finishOrder(int orderId){

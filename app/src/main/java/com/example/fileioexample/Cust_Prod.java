@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.example.fileioexample.store.Product;
 import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,6 +56,7 @@ public class Cust_Prod extends AppCompatActivity {
 
             }
         });
+        NavigationUtils.setupCustomerNavigationMenu(this);
     }
 
     public void gotoCust_Order(View view){

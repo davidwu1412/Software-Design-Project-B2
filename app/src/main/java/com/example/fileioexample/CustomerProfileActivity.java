@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.example.fileioexample.utils.Popup;
 
 public class CustomerProfileActivity extends AppCompatActivity {
@@ -15,15 +16,16 @@ public class CustomerProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_profile);
+        setContentView(R.layout.nav_customerprofile);
 
         setupCustomerProfileText();
+        NavigationUtils.setupCustomerNavigationMenu(this);
     }
 
     //Set the text fields of the profile screen
     private void setupCustomerProfileText(){
         TextView usernameText = (TextView) findViewById(R.id.customerProfile_username);
-        usernameText.setText(CurrentUser.ownerUsername);
+        usernameText.setText(CurrentUser.customerUsername);
         TextView firstNameText = (TextView) findViewById(R.id.customerProfile_firstName);
         if(CurrentUser.customer.getFirstName() != null)
             firstNameText.setText(CurrentUser.customer.getFirstName());
