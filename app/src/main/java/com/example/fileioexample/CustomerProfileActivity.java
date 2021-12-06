@@ -1,40 +1,31 @@
 package com.example.fileioexample;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.fileioexample.account.CustomerAccount;
-import com.example.fileioexample.login.LoginModel;
 import com.example.fileioexample.utils.CurrentUser;
-import com.example.fileioexample.utils.DatabaseUtils;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.example.fileioexample.utils.Popup;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-
-import java.util.HashMap;
 
 public class CustomerProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_profile);
+        setContentView(R.layout.nav_customerprofile);
 
         setupCustomerProfileText();
+        NavigationUtils.setupCustomerNavigationMenu(this);
     }
 
     //Set the text fields of the profile screen
     private void setupCustomerProfileText(){
         TextView usernameText = (TextView) findViewById(R.id.customerProfile_username);
-        usernameText.setText(CurrentUser.username);
+        usernameText.setText(CurrentUser.customerUsername);
         TextView firstNameText = (TextView) findViewById(R.id.customerProfile_firstName);
         if(CurrentUser.customer.getFirstName() != null)
             firstNameText.setText(CurrentUser.customer.getFirstName());

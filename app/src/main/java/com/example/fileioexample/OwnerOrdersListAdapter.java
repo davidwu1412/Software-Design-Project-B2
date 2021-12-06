@@ -10,34 +10,43 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fileioexample.store.Order;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OwnerOrdersListAdapter extends RecyclerView.Adapter<OwnerOrdersListAdapter.ordersViewHolder>{
 
-    private List<OrderObj> orderObjList = new ArrayList<>();
+    //private List<OrderObj> orderObjList = new ArrayList<>();
+    private ArrayList<Order> orderList = new ArrayList<Order>();
     private Context context;
     private OnOrderListener myOnOrderListener;
 
-    public OwnerOrdersListAdapter(Context context, List<OrderObj> orderObjList, OnOrderListener onOrderListener){
+    /*public OwnerOrdersListAdapter(Context context, List<OrderObj> orderObjList, OnOrderListener onOrderListener){
         this.context = context;
         this.orderObjList = orderObjList;
         this.myOnOrderListener = onOrderListener;
 
+    }*/
+
+    public OwnerOrdersListAdapter(Context context, ArrayList<Order> orderList, OnOrderListener onOrderListener){
+        this.context = context;
+        this.orderList = orderList;
+        this.myOnOrderListener = onOrderListener;
     }
 
     @Override
     public void onBindViewHolder(@NonNull OwnerOrdersListAdapter.ordersViewHolder holder, int position) {
-        OrderObj orderObj = orderObjList.get(position);
-        if (orderObj.getFulfilled().equals("false")){
-            orderObj.setFulfilled("Incomplete");
-        }else{
-            orderObj.setFulfilled("Completed");
+        Order order = orderList.get(position);
+        String fulfilledStatus = "Incomplete";
+        if (order.isFulfilled()){
+            fulfilledStatus = "Completed";
         }
 
-        holder.orderId.setText(orderObj.getOrderId());
-        holder.customerUsername.setText(orderObj.getCustomerUsername());
-        holder.fulfilled.setText(orderObj.getFulfilled());
+        holder.orderId.setText(Integer.toString(order.getOrderId()));
+        holder.customerUsername.setText(order.getCustomerUsername());
+        holder.fulfilled.setText(fulfilledStatus);
 
     }
 
@@ -53,7 +62,7 @@ public class OwnerOrdersListAdapter extends RecyclerView.Adapter<OwnerOrdersList
 
     @Override
     public int getItemCount(){
-        return orderObjList.size();
+        return orderList.size();
     }
 
     public class ordersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

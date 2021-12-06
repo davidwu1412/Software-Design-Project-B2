@@ -5,14 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.android.material.navigation.NavigationView;
+import com.example.fileioexample.store.Order;
+import com.example.fileioexample.store.Product;
+import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,8 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import Current.Current_Order;
 
 public class Order_Details extends AppCompatActivity {
     ListView listview;
@@ -32,7 +32,17 @@ public class Order_Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_order_detail);
 
+        Order order = findOrderInfo();
+
         Intent intent = getIntent();
+        TextView textView = findViewById(R.id.textView4);
+        textView.setText("Store: " + CurrentUser.store.getName());
+        TextView textView1 = findViewById(R.id.textView5);
+        textView1.setText("Order: " + order.getOrderId());
+        TextView textView2 = findViewById(R.id.textView6);
+        textView2.setText("Customer: " + order.getCustomerUsername());
+
+        /*Intent intent = getIntent();
         Current_Order Order = new Current_Order();
         String Owner = Order.Owner;
         TextView textView = findViewById(R.id.textView4);
@@ -42,14 +52,39 @@ public class Order_Details extends AppCompatActivity {
         textView1.setText("Order: " + Order_number);
         String Customer = Order.Customer;
         TextView textView2 = findViewById(R.id.textView6);
-        textView2.setText("Customer: " + Customer);
+        textView2.setText("Customer: " + Customer);*/
 
         listview = findViewById(R.id.listview);
         final ArrayList<String> list = new ArrayList<>();
         final ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.list_view, list);
         listview.setAdapter(adapter);
 
-        DatabaseReference Database = FirebaseDatabase.getInstance().getReference().child("stores").child(Owner).child("orderList").child(Order_number).child("products");
+        /*for(Product p: order.getProducts()){
+            String txt = info.getBrand() + " " + info.getName() + ": " + info.getPrice() + " " + info.getQuantity();
+            list.add(txt);
+        }*/
+
+        DatabaseReference Database = FirebaseDatabase.getInstance().getReference().child("stores")
+                .child(CurrentUser.ownerUsername).child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("products");
+        Database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                list.clear();
+                for(DataSnapshot snapshot: datasnapshot.getChildren()){
+                    Product currentProduct = snapshot.getValue(Product.class);
+                    String txt = currentProduct.getBrand() + " " + currentProduct.getName() + ": " + currentProduct.getPrice() + " " + currentProduct.getQuantity();
+                    list.add(txt);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        /*DatabaseReference Database = FirebaseDatabase.getInstance().getReference().child("stores").child(Owner).child("orderList").child(Order_number).child("products");
         Database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
@@ -66,8 +101,7 @@ public class Order_Details extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
-
+        });*/
 
         checkBox = (CheckBox) findViewById(R.id.checkBox);
         checkBox.setOnClickListener(new View.OnClickListener() {
@@ -76,39 +110,44 @@ public class Order_Details extends AppCompatActivity {
                 if(checkBox.isChecked()){
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = database.getReference();
-                    dbRef = database.getReference().child("stores").child(Owner).child("orderList").child(Order_number).child("fulfilled");
-                    dbRef.setValue("True");
+                    dbRef = database.getReference().child("stores").child(CurrentUser.ownerUsername)
+                            .child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("fulfilled");
+                    dbRef.setValue(true);
                 }
                 else{
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = database.getReference();
-                    dbRef = database.getReference().child("stores").child(Owner).child("orderList").child(Order_number).child("fulfilled");
-                    dbRef.setValue("Flase");
+                    dbRef = database.getReference().child("stores").child(CurrentUser.ownerUsername)
+                            .child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("fulfilled");
+                    dbRef.setValue(false);
                 }
             }
         });
 
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if(item.getItemId()==R.id.nav_list_products){
-                    Click_list_product();
-                }
-                if(item.getItemId()==R.id.nav_see_all_orders){
-                    Click_see_all_orders();
-                }
-                if(item.getItemId()==R.id.nav_logout){
-                    Click_Logout();
-                }
-                return true;
-            }
-        });
+        NavigationUtils.setupOwnerNavigationMenu(this);
     }
 
-    public void Click_list_product(){
-        Intent intent = new Intent(this,ListProd.class);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NavigationUtils.currentActivity = this;
+    }
+
+    //Fills the order info using CurrentUser.currentOrderToken
+    private Order findOrderInfo(){
+
+        for(Order o : CurrentUser.store.getOrdersList()){
+            if(o.getOrderId() == CurrentUser.currentOrderToken.getOrderId()){
+                return o;
+            }
+        }
+
+        return null;
+
+    }
+
+    /*public void Click_list_product(){
+        Intent intent = new Intent(this,OwnerListProductsActivity.class);
         startActivity(intent);
     }
 
@@ -117,10 +156,15 @@ public class Order_Details extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void Click_profile(){
+        Intent intent = new Intent(this,OwnerProfileActivity.class);
+        startActivity(intent);
+    }
+
     public void Click_Logout(){
         Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
-    }
+    }*/
 
 
     public static class information {

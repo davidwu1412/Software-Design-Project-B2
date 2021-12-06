@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.DatabaseUtils;
+
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MSG = "";
 
@@ -16,9 +19,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // these are for jumping into new activities after login or register
-    public void TestYourCode(View view){
+    public void startApp(View view){
         //jump to some view to test your activities
-        Intent intent = new Intent(this,Cart.class);
+        //CurrentUser.ownerUsername = "test4";
+        //DatabaseUtils.setupCurrentStore();
+        //CurrentUser.customerUsername = "test3";
+        //Intent intent = new Intent(this,Cust_Prod.class);
+        //Intent intent = new Intent(this,Cust_Order.class);
+        Intent intent = new Intent(this,LoginActivity.class);
         startActivity(intent);
     }
 

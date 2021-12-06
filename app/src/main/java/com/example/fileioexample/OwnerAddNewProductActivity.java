@@ -74,7 +74,7 @@ public class OwnerAddNewProductActivity extends AppCompatActivity {
         CurrentUser.store.getAvailableProducts().add(new Product(productName, brand, price));
 
         //Add the new account credentials to the database
-        DatabaseUtils.writeAvailableProductsToDatabase(CurrentUser.username, CurrentUser.store);
+        DatabaseUtils.writeAvailableProductsToDatabase(CurrentUser.ownerUsername, CurrentUser.store);
         setResult(1); //Set result code to 1 to indicate account was successfully created
         finish();
     }

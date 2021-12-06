@@ -7,6 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fileioexample.account.OwnerAccount;
+import com.example.fileioexample.store.Product;
+import com.example.fileioexample.store.Store;
+import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.DatabaseUtils;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,12 +31,13 @@ public class ListStores extends AppCompatActivity implements StoresListAdapter.O
     private RecyclerView recyclerView;
     StoresListAdapter adapter;
     DatabaseReference ref;
-    private List<StoreObj> storeObjList = new ArrayList<>();
+    //private List<StoreObj> storeObjList = new ArrayList<>();
+    private ArrayList<OwnerAccount> storeList = new ArrayList<OwnerAccount>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_stores);
+        setContentView(R.layout.nav_liststores);
 
         ref = FirebaseDatabase.getInstance().getReference("/accounts/owners/");
         recyclerView = findViewById(R.id.recycler_store);
@@ -37,6 +45,24 @@ public class ListStores extends AppCompatActivity implements StoresListAdapter.O
         // displays the recyclerview linearly(vertical)
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                storeList.clear();
+                for (DataSnapshot dataSnapshot1 : snapshot.getChildren()) {
+                    OwnerAccount storeObj = dataSnapshot1.getValue(OwnerAccount.class);
+                    storeList.add(storeObj);
+                }
+                adapter = new StoresListAdapter(ListStores.this, storeList, ListStores.this::onStoreClick);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        /*ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 storeObjList.clear();
@@ -53,16 +79,19 @@ public class ListStores extends AppCompatActivity implements StoresListAdapter.O
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
-
+        });*/
+        NavigationUtils.setupCustomerNavigationMenu(this);
     }
 
     @Override
     public void onStoreClick(int position) {
         //String a = storeObjList.get(position).getStoreAddress();//gives reference to the object selected in the activity
-        Current_Store.setStoreName(storeObjList.get(position).getStoreName());
-        Current_Store.setAddress(storeObjList.get(position).getStoreAddress());
-        Intent intent = new Intent(this, OwnerOrdersList.class);
+        //Current_Store.setStoreName(storeObjList.get(position).getStoreName());
+        //Current_Store.setAddress(storeObjList.get(position).getStoreAddress());
+        CurrentUser.ownerUsername = storeList.get(position).getUsername();
+        DatabaseUtils.setupCurrentStore();
+        CurrentUser.cart = new ArrayList<Product>();
+        Intent intent = new Intent(this, Cust_Prod.class);
         startActivity(intent);
 
     }

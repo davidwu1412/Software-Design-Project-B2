@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fileioexample.account.OwnerAccount;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +18,14 @@ public class StoresListAdapter extends RecyclerView.Adapter<StoresListAdapter.st
 
 
 
-    private List<StoreObj> storeObjList = new ArrayList<>();
+    //private List<StoreObj> storeObjList = new ArrayList<>();
+    private ArrayList<OwnerAccount> storeList = new ArrayList<OwnerAccount>();
     private Context context;
     private OnStoreListener myOnStoreListener;
 
-    public StoresListAdapter(Context context, List<StoreObj> storeObjList, OnStoreListener onStoreListener){
+    public StoresListAdapter(Context context, ArrayList<OwnerAccount> storeObjList, OnStoreListener onStoreListener){
         this.context = context;
-        this.storeObjList = storeObjList;
+        this.storeList = storeObjList;
         this.myOnStoreListener = onStoreListener;
 
     }
@@ -30,7 +33,7 @@ public class StoresListAdapter extends RecyclerView.Adapter<StoresListAdapter.st
 
     @Override
     public void onBindViewHolder(@NonNull StoresListAdapter.storesViewHolder holder, int position) {
-        StoreObj storeObj = storeObjList.get(position);
+        OwnerAccount storeObj = storeList.get(position);
         holder.storeName.setText(storeObj.getStoreName());
         holder.storeAddress.setText(storeObj.getStoreAddress());
 
@@ -52,7 +55,7 @@ public class StoresListAdapter extends RecyclerView.Adapter<StoresListAdapter.st
 
     @Override
     public int getItemCount(){
-        return storeObjList.size();
+        return storeList.size();
     }
 
     public class storesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

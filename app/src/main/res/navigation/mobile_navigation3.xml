@@ -11,7 +11,7 @@
         android:label="See All Stores"
         tools:layout="@layout/fragment_see_all_stores" />
     <fragment
-        android:id="@+id/seeAllOrders"
+        android:id="@+id/customerProfile"
         android:name="com.example.fileioexample.SeeAllOrders"
         android:label="See All Orders"
         tools:layout="@layout/fragment_see_all_orders" />

@@ -97,16 +97,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void customerLogin() {
         //Start the first customer activity
-        CurrentUser.username = getUsername();
+        CurrentUser.customerUsername = getUsername();
         readCustomerAccountInfo();
-        Intent intent = new Intent(this,CustomerProfileActivity.class);
+        Intent intent = new Intent(this,ListStores.class);
         startActivity(intent);
     }
 
     @Override
     public void ownerLogin() {
         //Start the first owner activity
-        CurrentUser.username = getUsername();
+        CurrentUser.ownerUsername = getUsername();
         DatabaseUtils.setupCurrentStore();
         //Intent intent = new Intent(this,OwnerProfileActivity.class); //Test profile screen
         Intent intent = new Intent(this,OwnerListProductsActivity.class);
@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     private void readCustomerAccountInfo(){
 
         //Read the customer data when the activity is started
-        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(CurrentUser.username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        DatabaseUtils.CUSTOMER_ACCOUNTS_REF.child(CurrentUser.customerUsername).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -128,12 +128,21 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                         CurrentUser.customer = task.getResult().getValue(CustomerAccount.class);
                         Log.i("demo", "CurrentUser.customer = " + CurrentUser.customer.toString());
                     } else {
-                        CurrentUser.customer = new CustomerAccount(CurrentUser.username);
+                        CurrentUser.customer = new CustomerAccount(CurrentUser.customerUsername);
                     }
                 }
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        EditText usernameText = (EditText) findViewById(R.id.editTextTextPersonName5);
+        usernameText.setText("");
+        EditText passwordText = (EditText) findViewById(R.id.editTextTextPassword5);
+        passwordText.setText("");
     }
 
     //This method is to be used for testing the ability to write to the database
@@ -146,8 +155,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         store.getAvailableProducts().add(new Product("chips", "lays", 0.99));
         store.getAvailableProducts().add(new Product("cola", "pepsi", 1.99));
         Order order1 = new Order();
-        order1.setCustomerName("test3");
-        order1.setOrderNumber(1);
+        order1.setCustomerUsername("test3");
+        order1.setOrderId(1);
         order1.setFulfilled(false);
         order1.getProducts().add(new Product("cola", "pepsi", 1.99, 2));
         order1.getProducts().add(new Product("chips", "lays", 0.99, 3));

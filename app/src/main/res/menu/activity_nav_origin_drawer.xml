@@ -11,6 +11,9 @@
             android:id="@+id/nav_see_all_orders"
             android:title="@string/menu_See_ALL_Orders" />
         <item
+            android:id="@+id/nav_profile"
+            android:title="Profile" />
+        <item
             android:id="@+id/nav_logout"
             android:title="@string/menu_Logout" />
     </group>

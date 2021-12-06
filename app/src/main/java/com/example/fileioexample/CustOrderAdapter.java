@@ -9,18 +9,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fileioexample.store.Order;
-import com.example.fileioexample.store.Product;
+
 import android.view.View;
 
 import java.util.ArrayList;
 
 public class CustOrderAdapter extends RecyclerView.Adapter<CustOrderAdapter.CustOrderViewHolder> {
     Context context;
-    ArrayList<CustOrder> Order;
+    ArrayList<Order> orders;
 
-    public CustOrderAdapter(Context context, ArrayList<CustOrder> Order){
+    public CustOrderAdapter(Context context, ArrayList<Order> orders){
         this.context = context;
-        this.Order = Order;
+        this.orders = orders;
+    }
+
+    public String orderInfo(Order order) {
+        return "Order: "+ order.getOrderId()+"\n"+"TotalCost: "+ order.getTotalCost();
     }
 
     @NonNull
@@ -32,14 +36,14 @@ public class CustOrderAdapter extends RecyclerView.Adapter<CustOrderAdapter.Cust
 
     @Override
     public void onBindViewHolder(@NonNull CustOrderViewHolder holder, int position) {
-        CustOrder o = Order.get(position);
-        holder.OrderInfo.setText(o.toString());
-        holder.Orderstatus.setText("Order fulfilled: "+o.getFulfilled());
+        Order o = orders.get(position);
+        holder.OrderInfo.setText(orderInfo(o));
+        holder.Orderstatus.setText("Order fulfilled: "+o.isFulfilled());
     }
 
     @Override
     public int getItemCount() {
-        return Order.size();
+        return orders.size();
     }
 
     public static class CustOrderViewHolder extends RecyclerView.ViewHolder{

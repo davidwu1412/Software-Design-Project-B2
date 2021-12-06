@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".Cust_Prod">
 
+    <Button
+        android:id="@+id/button12"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:onClick="gotoCust_Cart"
+        android:text="Cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button13"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button13"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:onClick="gotoCust_Order"
+        android:text="Orders"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button12" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/CustProdRecyclerView"
         android:layout_width="0dp"
@@ -16,4 +38,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

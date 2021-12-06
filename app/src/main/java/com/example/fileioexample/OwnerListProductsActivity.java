@@ -6,13 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.fileioexample.store.Product;
 import com.example.fileioexample.store.Store;
 import com.example.fileioexample.ui.ownerListProducts.OwnerListProductsAdapter;
 import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.NavigationUtils;
 import com.example.fileioexample.utils.Popup;
 
 public class OwnerListProductsActivity extends AppCompatActivity {
@@ -24,15 +23,24 @@ public class OwnerListProductsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_list_products);
+        setContentView(R.layout.nav_orderlistproducts);
 
-        ownerName = CurrentUser.username;
+        ownerName = CurrentUser.ownerUsername;
         store = CurrentUser.store;
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         OwnerListProductsAdapter adapter = new OwnerListProductsAdapter(this, store);
         recyclerView.setAdapter(adapter);
+
+        NavigationUtils.setupOwnerNavigationMenu(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NavigationUtils.currentActivity = this;
+        //Log.i("demo", "OwnerProductListActivity resumed");
     }
 
     public void addNewProduct(View view){

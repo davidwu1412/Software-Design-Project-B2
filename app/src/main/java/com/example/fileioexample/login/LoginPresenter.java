@@ -20,7 +20,7 @@ public class LoginPresenter implements LoginContract.Presenter{
         String username = view.getUsername();
         String password = view.getPassword();
 
-        //Check if the account credentials exist
+        //Check if the password is correct
         if(model.validateLogin(username, password)){
             //Check if the user is valid and if it's a customer or owner account
             if(model.accountType(username).equals("customer")){
@@ -28,11 +28,13 @@ public class LoginPresenter implements LoginContract.Presenter{
             }else if(model.accountType(username).equals("owner")){
                 view.ownerLogin();
             }else{
-                //This should only occur if the password data exists but
+                //This should only occur if there is an anomaly in the
+                //database where the password data exists but
                 //the user isn't stored in the account types
-                view.displayMessage("Unable to identify");
+                view.displayMessage("Unable to identify account type");
             }
         }else{
+            //If password is incorrect, display error message to user
             view.displayMessage("Invalid username or password");
         }
 

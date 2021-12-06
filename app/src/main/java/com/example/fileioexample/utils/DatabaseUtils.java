@@ -3,6 +3,7 @@ package com.example.fileioexample.utils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fileioexample.account.CustomerAccount;
 import com.example.fileioexample.account.OwnerAccount;
@@ -106,7 +107,7 @@ public class DatabaseUtils {
         CurrentUser.store = new Store();
 
         //Setup the initial read for the storeName and storeAddress
-        DatabaseUtils.OWNER_ACCOUNTS_REF.child(CurrentUser.username).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        DatabaseUtils.OWNER_ACCOUNTS_REF.child(CurrentUser.ownerUsername).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -187,7 +188,7 @@ public class DatabaseUtils {
         });*/
 
         //Setup the initial read for the owner data
-        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.username).child("availableProducts").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("availableProducts").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -202,7 +203,7 @@ public class DatabaseUtils {
             }
         });
 
-        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.username).child("orderList").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("orderList").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -212,16 +213,77 @@ public class DatabaseUtils {
                     if(task.getResult().getValue() != null) {
                         GenericTypeIndicator<ArrayList<Order>> t = new GenericTypeIndicator<ArrayList<Order>>() {};
                         CurrentUser.store.setOrdersList(task.getResult().getValue(t));
+
+                        //Since we are using the orderNumber as the key for each element of orderList in the
+                        //database, we must remove all of the null indices after reading the data
+                        CurrentUser.store.getOrdersList().removeAll(Collections.singleton(null));
                     }
                 }
             }
         });
 
-        //Since we are using the orderNumber as the key for each element of orderList in the
-        //database, we must remove all of the null indices after reading the data
-        CurrentUser.store.getOrdersList().removeAll(Collections.singleton(null));
 
     }
+
+    public static void updateCurrentStoreOrders(){
+        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("orderList").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("demo", "Error getting data", task.getException());
+                }
+                else {
+                    if(task.getResult().getValue() != null) {
+                        GenericTypeIndicator<ArrayList<Order>> t = new GenericTypeIndicator<ArrayList<Order>>() {};
+                        CurrentUser.store.setOrdersList(task.getResult().getValue(t));
+                        CurrentUser.store.getOrdersList().removeAll(Collections.singleton(null));
+                    }
+                }
+            }
+        });
+
+    }
+
+    /*public static void updateCurrentStoreOrders(RecyclerView.Adapter adapter){
+        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("orderList").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("demo", "Error getting data", task.getException());
+                }
+                else {
+                    if(task.getResult().getValue() != null) {
+                        GenericTypeIndicator<ArrayList<Order>> t = new GenericTypeIndicator<ArrayList<Order>>() {};
+                        CurrentUser.store.setOrdersList(task.getResult().getValue(t));
+                        CurrentUser.store.getOrdersList().removeAll(Collections.singleton(null));
+                    }
+                }
+            }
+        });
+
+        adapter.notifyDataSetChanged();
+    }*/
+
+    public static void customerSetupCurrentStore(RecyclerView.Adapter adapter){
+        DatabaseUtils.STORES_REFERENCE.child(CurrentUser.ownerUsername).child("orderList").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("demo", "Error getting data", task.getException());
+                }
+                else {
+                    if(task.getResult().getValue() != null) {
+                        GenericTypeIndicator<ArrayList<Order>> t = new GenericTypeIndicator<ArrayList<Order>>() {};
+                        CurrentUser.store.setOrdersList(task.getResult().getValue(t));
+                        CurrentUser.store.getOrdersList().removeAll(Collections.singleton(null));
+                    }
+                }
+            }
+        });
+
+        adapter.notifyDataSetChanged();
+    }
+
 
     public static void writeStoreToDatabase(String username, Store store) {
 
@@ -250,7 +312,7 @@ public class DatabaseUtils {
         //This code sets the key of each order to in orderList to be orderNumber when
         //writing to the database
         for(Order currentOrder: store.getOrdersList()){
-            DatabaseReference currentOrderRef = orderListRef.child(Integer.toString(currentOrder.getOrderNumber()));
+            DatabaseReference currentOrderRef = orderListRef.child(Integer.toString(currentOrder.getOrderId()));
             currentOrderRef.setValue(currentOrder);
         }
     }

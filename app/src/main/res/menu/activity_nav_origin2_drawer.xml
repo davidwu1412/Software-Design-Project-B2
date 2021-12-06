@@ -8,8 +8,8 @@
             android:id="@+id/seeAllStores"
             android:title="See All Stores" />
         <item
-            android:id="@id/seeAllOrders"
-            android:title="See All Orders" />
+            android:id="@id/customerProfile"
+            android:title="Profile" />
         <item
             android:id="@id/logoutCart"
             android:title="Logout" />
