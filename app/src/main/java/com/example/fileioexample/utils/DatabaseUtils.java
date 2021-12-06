@@ -304,17 +304,17 @@ public class DatabaseUtils {
         DatabaseReference storeRef = DatabaseUtils.STORES_REFERENCE.child(username);
         DatabaseReference orderListRef = storeRef.child("orderList");
 
-        /*
+
         if(store.getOrdersList() != null)
             storeRef.child("orderList").setValue(store.getOrdersList());
-        */
+
 
         //This code sets the key of each order to in orderList to be orderNumber when
         //writing to the database
-        for(Order currentOrder: store.getOrdersList()){
+        /*for(Order currentOrder: store.getOrdersList()){
             DatabaseReference currentOrderRef = orderListRef.child(Integer.toString(currentOrder.getOrderId()));
             currentOrderRef.setValue(currentOrder);
-        }
+        }*/
     }
 
 }

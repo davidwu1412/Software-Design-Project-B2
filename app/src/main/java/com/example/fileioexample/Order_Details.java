@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.fileioexample.store.Order;
 import com.example.fileioexample.store.Product;
 import com.example.fileioexample.utils.CurrentUser;
+import com.example.fileioexample.utils.DatabaseUtils;
 import com.example.fileioexample.utils.NavigationUtils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -107,9 +108,23 @@ public class Order_Details extends AppCompatActivity {
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkBox.isChecked()){
+
+                for(Order o : CurrentUser.store.getOrdersList()){
+                    if(o.getOrderId() == CurrentUser.currentOrderToken.getOrderId()){
+                        o.setFulfilled(checkBox.isChecked());
+                    }
+                }
+                DatabaseUtils.writeOrderListToDatabase(CurrentUser.ownerUsername, CurrentUser.store);
+
+                /*if(checkBox.isChecked()){
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = database.getReference();
+                    for(Order o : CurrentUser.store.getOrdersList()){
+                        if(o.getOrderId() == CurrentUser.currentOrderToken.getOrderId()){
+                            o.setFulfilled(true);
+                        }
+                    }
+                    DatabaseUtils.writeOrderListToDatabase(CurrentUser.ownerUsername, CurrentUser.store);
                     dbRef = database.getReference().child("stores").child(CurrentUser.ownerUsername)
                             .child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("fulfilled");
                     dbRef.setValue(true);
@@ -117,10 +132,10 @@ public class Order_Details extends AppCompatActivity {
                 else{
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = database.getReference();
-                    dbRef = database.getReference().child("stores").child(CurrentUser.ownerUsername)
+                    /*dbRef = database.getReference().child("stores").child(CurrentUser.ownerUsername)
                             .child("orderList").child(Integer.toString(CurrentUser.currentOrderToken.getOrderId())).child("fulfilled");
                     dbRef.setValue(false);
-                }
+                }*/
             }
         });
 

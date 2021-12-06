@@ -84,6 +84,8 @@ public class Cust_Order extends AppCompatActivity {
                     if(task.getResult().getValue() != null) {
                         GenericTypeIndicator<ArrayList<OrderToken>> t = new GenericTypeIndicator<ArrayList<OrderToken>>() {};
                         orderTokens = task.getResult().getValue(t);
+                        if(orderTokens == null)
+                            orderTokens = new ArrayList<OrderToken>();
                         orderTokens.removeAll(Collections.singleton(null));
                         updateOrderScreen();
                     }
@@ -97,6 +99,8 @@ public class Cust_Order extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 GenericTypeIndicator<ArrayList<Order>> t = new GenericTypeIndicator<ArrayList<Order>>() {};
                 CurrentUser.store.setOrdersList(snapshot.getValue(t));
+                if(CurrentUser.store.getOrdersList() == null)
+                    CurrentUser.store.setOrdersList(new ArrayList<Order>());
                 CurrentUser.store.getOrdersList().removeAll(Collections.singleton(null));
                 orders.clear();
                 updateOrderScreen();

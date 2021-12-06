@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FileIO example</string>
+    <string name="app_name">B2 Shopping</string>
     <string name="title_activity_list_prod">ListProd</string>
     <string name="title_home">All Products</string>
     <string name="title_dashboard">Cart</string>

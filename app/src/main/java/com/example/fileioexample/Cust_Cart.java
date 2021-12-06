@@ -28,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class Cust_Cart extends AppCompatActivity {
 
@@ -108,16 +109,40 @@ public class Cust_Cart extends AppCompatActivity {
                         //Update the orderId by incrementing it by 1
                         FirebaseDatabase.getInstance().getReference("orderId").setValue(orderId + 1);
                         //Write the order token
-                        FirebaseDatabase.getInstance().getReference("orders").
-                                child(CurrentUser.customerUsername).child("orderTokens").
-                                child(Integer.toString(orderId)).setValue(orderToken);
-                        //Write the orderList for the selected store
-                        DatabaseUtils.writeOrderListToDatabase(CurrentUser.ownerUsername, CurrentUser.store);
+                        FirebaseDatabase.getInstance().getReference("orders").child(CurrentUser.customerUsername).
+                            child("orderTokens").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                if (!task.isSuccessful()) {
+                                    Log.e("demo", "Error getting data", task.getException());
+                                }
+                                else {
+                                    ArrayList<OrderToken> tokens = null;
+                                    if(task.getResult().getValue() != null) {
+                                        GenericTypeIndicator<ArrayList<OrderToken>> t = new GenericTypeIndicator<ArrayList<OrderToken>>() {};
+                                        tokens = task.getResult().getValue(t);
+                                    }
+                                    if(tokens == null)
+                                        tokens = new ArrayList<OrderToken>();
+                                    tokens.add(orderToken);
+                                    FirebaseDatabase.getInstance().getReference("orders").
+                                            child(CurrentUser.customerUsername).child("orderTokens").
+                                            setValue(tokens);
 
-                        //Clear the cart
-                        CurrentUser.cart.clear();
-                        adapter.notifyDataSetChanged();
-                        finishOrder(orderId);
+                                    //Write the orderList for the selected store
+                                    DatabaseUtils.writeOrderListToDatabase(CurrentUser.ownerUsername, CurrentUser.store);
+
+                                    //Clear the cart
+                                    CurrentUser.cart.clear();
+                                    adapter.notifyDataSetChanged();
+                                    finishOrder(orderId);
+                                }
+                            }
+                        });
+                        /*FirebaseDatabase.getInstance().getReference("orders").
+                                child(CurrentUser.customerUsername).child("orderTokens").
+                                child(Integer.toString(orderId)).setValue(orderToken);*/
+
                     }
                 }
             }
